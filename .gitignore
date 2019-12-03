@@ -18,4 +18,5 @@ testRBabel.tex
 *.log
 *.*#
 .RData
+*.pyc
 
