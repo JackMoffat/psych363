@@ -50,7 +50,11 @@ plot(x,y,type = 'b')
    
    This stackexchange [[https://tex.stackexchange.com/questions/114864/how-to-get-bibtex-to-work-with-org-mode-latex-export][question]] may be useful if you have trouble getting things to work. 
 
+   And the ta in the class wrote this article \cite{turpin2019bullshit}
+
+
    I wrote a book about using computers in psychology \cite{anderson2014computational}.
+
 
 
    
