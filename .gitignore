@@ -18,5 +18,5 @@ testRBabel.tex
 *.log
 *.*#
 .RData
-*.pyc
+code/*.pyc
 
