@@ -16,3 +16,6 @@ testRBabel.tex
 *.blg
 *.bbl
 *.log
+*.*#
+.RData
+
