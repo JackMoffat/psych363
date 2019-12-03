@@ -1,354 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2019-10-30 Wed 13:30 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
 <title>Introduction to Computing for Psychology Students</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Britt Anderson" />
-<meta name="description" content="Add description of the program here! And Review section"
- />
+<meta name="author" content="(Britt Anderson)"/>
+<meta name="description" content="Add description of the program here! And Review section"/>
+<meta name="keywords" content=""/>
 <style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+.underline { text-decoration: underline; }
 </style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+<link rel="stylesheet" href="file:///home/student/gitrepos/reveal.js/css/reveal.css"/>
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
+<link rel="stylesheet" href="file:///home/student/gitrepos/reveal.js/css/theme/moon.css" id="theme"/>
 
 
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/student/gitrepos/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 </script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">Introduction to Computing for Psychology Students</h1>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Introduction to Computing for Psychology Students</h1><h2 class="author">Britt Anderson</h2><h2 class="date">2019-04-30 Tue 00:00</h2><p class="date">Created: 2019-12-03 Tue 12:01</p>
+</section>
+<section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0c2de56">1. Course Goal:</a></li>
-<li><a href="#org23d957c">2. Learning Objectives:</a></li>
-<li><a href="#org700a5f9">3. Course Mechanics</a></li>
-<li><a href="#orgab7f81c">4. Outline</a>
+<li><a href="#/slide-org83c227a">1. Course Goal:</a></li>
+<li><a href="#/slide-orgb208077">2. Learning Objectives:</a></li>
+<li><a href="#/slide-org3d28d8b">3. Course Mechanics</a></li>
+<li><a href="#/slide-org52a1b60">4. Outline</a>
 <ul>
-<li><a href="#orgc7d9f98">4.1. Session 1 Installing Linux</a>
+<li><a href="#/slide-orgd33fa4a">4.1. Session 1 Installing Linux</a>
 <ul>
-<li><a href="#org7a33570">4.1.1. Instructions for testing the Live CD and installing to USB</a></li>
-<li><a href="#org4df3688">4.1.2. Troubleshooting</a></li>
-<li><a href="#orgd9395da">4.1.3. Homework</a></li>
+<li><a href="#/slide-org1a47dd0">4.1.1. Instructions for testing the Live CD and installing to USB</a></li>
+<li><a href="#/slide-orga543293">4.1.2. Troubleshooting</a></li>
+<li><a href="#/slide-org832b004">4.1.3. Homework</a></li>
 </ul>
 </li>
-<li><a href="#org56b7361">4.2. Session 2 Command Line Basics and EMACS Introduction</a>
+<li><a href="#/slide-orgb14ae03">4.2. Session 2 Command Line Basics and EMACS Introduction</a>
 <ul>
-<li><a href="#org25c62d8">4.2.1. Command Line</a></li>
-<li><a href="#org492cf91">4.2.2. Exercises Emacs</a></li>
+<li><a href="#/slide-orgd14ced7">4.2.1. Command Line</a></li>
+<li><a href="#/slide-orgf248e8a">4.2.2. Exercises Emacs</a></li>
 </ul>
 </li>
-<li><a href="#orge5372d7">4.3. Session 3 Version Control Github and Beginning With Python</a>
+<li><a href="#/slide-orgb2a14da">4.3. Session 3 Version Control Github and Beginning With Python</a>
 <ul>
-<li><a href="#org0f0fda6">4.3.1. Version Control</a></li>
-<li><a href="#org58426ad">4.3.2. Beginning Python</a></li>
+<li><a href="#/slide-orgac7f13b">4.3.1. Version Control</a></li>
+<li><a href="#/slide-orgf282e74">4.3.2. Beginning Python</a></li>
 </ul>
 </li>
-<li><a href="#org8d8ca0f">4.4. Session 4 Python</a>
+<li><a href="#/slide-org0ad8919">4.4. Session 4 Python</a>
 <ul>
-<li><a href="#org8692161">4.4.1. Types</a></li>
-<li><a href="#org14f2e58">4.4.2. Constants and Variables</a></li>
-<li><a href="#org4eedf17">4.4.3. Assignment and Equality</a></li>
-<li><a href="#org9762ddc">4.4.4. Loops</a></li>
-<li><a href="#org1a8253a">4.4.5. Functions</a></li>
-<li><a href="#orgef49820">4.4.6. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span></a></li>
-<li><a href="#org0b1839a">4.4.7. Programs</a></li>
-<li><a href="#orgda02f45">4.4.8. Debugging and Basic Working Methods</a></li>
-<li><a href="#org7cb497d">4.4.9. IDEs</a></li>
-<li><a href="#org3350c87">4.4.10. Pip to Install Libraries and Virtual Environments</a></li>
+<li><a href="#/slide-org3edd463">4.4.1. Types</a></li>
+<li><a href="#/slide-orgd385c2f">4.4.2. Constants and Variables</a></li>
+<li><a href="#/slide-orga646d1b">4.4.3. Assignment and Equality</a></li>
+<li><a href="#/slide-org885f6c7">4.4.4. Loops</a></li>
+<li><a href="#/slide-org77c3332">4.4.5. Functions</a></li>
+<li><a href="#/slide-org14e969c">4.4.6. Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span></a></li>
+<li><a href="#/slide-org2d87a64">4.4.7. Programs</a></li>
+<li><a href="#/slide-org07cd9fb">4.4.8. Debugging and Basic Working Methods</a></li>
+<li><a href="#/slide-org3a0838b">4.4.9. IDEs</a></li>
+<li><a href="#/slide-org5e918ba">4.4.10. Pip to Install Libraries and Virtual Environments</a></li>
 </ul>
 </li>
-<li><a href="#org00f5b8e">4.5. Session 5 R</a>
+<li><a href="#/slide-orgb571e1c">4.5. Session 5 R</a>
 <ul>
-<li><a href="#org7c88226">4.5.1. R</a></li>
-<li><a href="#org215352d">4.5.2. Getting R</a></li>
-<li><a href="#orga449387">4.5.3. R Coding Basics - compare</a></li>
-<li><a href="#orge77221d">4.5.4. Types</a></li>
-<li><a href="#org271b56f">4.5.5. Data Selection in R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span></a></li>
-<li><a href="#org7a0756d">4.5.6. Assignment and Equality</a></li>
-<li><a href="#org361e026">4.5.7. Loops</a></li>
-<li><a href="#orgd25e245">4.5.8. Functions</a></li>
-<li><a href="#orgedfce47">4.5.9. Libraries for R:classdiscussion:</a></li>
-<li><a href="#orgb31c651">4.5.10. Programs</a></li>
-<li><a href="#org3e442da">4.5.11. Debugging and Basic Working Methods</a></li>
-<li><a href="#org23df6a6">4.5.12. IDEs</a></li>
+<li><a href="#/slide-org48c37a8">4.5.1. R</a></li>
+<li><a href="#/slide-org099acc8">4.5.2. Getting R</a></li>
+<li><a href="#/slide-org8eb4fbf">4.5.3. R Coding Basics - compare</a></li>
+<li><a href="#/slide-org2100c80">4.5.4. Types</a></li>
+<li><a href="#/slide-orga57cbc8">4.5.5. Data Selection in R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span></a></li>
+<li><a href="#/slide-org8f1f763">4.5.6. Assignment and Equality</a></li>
+<li><a href="#/slide-org545ea80">4.5.7. Loops</a></li>
+<li><a href="#/slide-org595704e">4.5.8. Functions</a></li>
+<li><a href="#/slide-orgbc61388">4.5.9. Libraries for R:classdiscussion:</a></li>
+<li><a href="#/slide-orgee93fad">4.5.10. Programs</a></li>
+<li><a href="#/slide-orgf514931">4.5.11. Debugging and Basic Working Methods</a></li>
+<li><a href="#/slide-org992d14f">4.5.12. IDEs</a></li>
 </ul>
 </li>
-<li><a href="#orgbcb89d9">4.6. Session 6 Data Handling</a>
+<li><a href="#/slide-orgae63033">4.6. Session 6 Data Handling</a>
 <ul>
-<li><a href="#org9ba9b1d">4.6.1. Data handling in R</a></li>
-<li><a href="#org85d962f">4.6.2. Data handling in Python</a></li>
+<li><a href="#/slide-org8d3c4a8">4.6.1. Data handling in R</a></li>
+<li><a href="#/slide-org1c2361b">4.6.2. Data handling in Python</a></li>
 </ul>
 </li>
-<li><a href="#orge236173">4.7. Session 7 Plotting in Python and R</a>
+<li><a href="#/slide-org741bf04">4.7. Session 7 Plotting in Python and R</a>
 <ul>
-<li><a href="#orgb393d02">4.7.1. General</a></li>
-<li><a href="#org01e239c">4.7.2. R</a></li>
-<li><a href="#orga9a70b8">4.7.3. Interaction Plots</a></li>
+<li><a href="#/slide-orge365c6d">4.7.1. General</a></li>
+<li><a href="#/slide-org56ae925">4.7.2. R</a></li>
+<li><a href="#/slide-orga1c70e3">4.7.3. Interaction Plots</a></li>
 </ul>
 </li>
-<li><a href="#org4bab4e7">4.8. Session 8 Programming Experiments</a>
+<li><a href="#/slide-org953d32a">4.8. Session 8 Programming Experiments</a>
 <ul>
-<li><a href="#org57fa237">4.8.1. Experimental Programming in Python</a></li>
+<li><a href="#/slide-orgcf3654f">4.8.1. Experimental Programming in Python</a></li>
 </ul>
 </li>
-<li><a href="#orgfe17430">4.9. Session 9 Report Writing</a>
+<li><a href="#/slide-org410bfa4">4.9. Session 9 Report Writing</a>
 <ul>
-<li><a href="#orga6455fa">4.9.1. Writing a simple report</a></li>
-<li><a href="#org42f07ff">4.9.2. Mixing Code and Text for reproducibility</a></li>
-<li><a href="#org78e63c7">4.9.3. Start the experimental coding here and continue this week, because the next session will be for running the experiments.</a></li>
+<li><a href="#/slide-org32a5f6b">4.9.1. Writing a simple report</a></li>
+<li><a href="#/slide-orgfe458d1">4.9.2. Mixing Code and Text for reproducibility</a></li>
+<li><a href="#/slide-org7a896bc">4.9.3. Homework</a></li>
 </ul>
 </li>
-<li><a href="#org9aab538">4.10. Session 10 Coding the Experiment</a></li>
-<li><a href="#orgb2031c5">4.11. Session 11 Collecting the Data</a></li>
-<li><a href="#orgd935648">4.12. Session 12 Presentations</a></li>
-<li><a href="#org2921958">4.13. Instructions for Burning Xubuntu to USB</a>
+<li><a href="#/slide-org6e2ad78">4.10. Session 10 Coding the Experiment</a></li>
+<li><a href="#/slide-orgdc0485d">4.11. Session 11 Collecting the Data</a></li>
+<li><a href="#/slide-orgc242aac">4.12. Session 12 Presentations</a>
 <ul>
-<li><a href="#org3d3ca10">4.13.1. Installation Instructions for Installing Xubuntu (and probably other -buntus) to a USB from a USB.</a></li>
+<li><a href="#/slide-org206fb66">4.12.1. Beamer</a></li>
+<li><a href="#/slide-org376dda3">4.12.2. RevealJS</a></li>
+<li><a href="#/slide-orgddb79c4">4.12.3. HTML5</a></li>
 </ul>
 </li>
-<li><a href="#orgec44462">4.14. Interesting Programs</a>
+<li><a href="#/slide-org9b42d00">4.13. Instructions for Burning Xubuntu to USB</a>
 <ul>
-<li><a href="#orga5db789">4.14.1. Programs</a></li>
+<li><a href="#/slide-org642e6c6">4.13.1. Installation Instructions for Installing Xubuntu (and probably other -buntus) to a USB from a USB.</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgfafa235">4.14. Interesting Programs</a>
+<ul>
+<li><a href="#/slide-org3fb3131">4.14.1. Programs</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#/slide-org708c7a6">5. Improvements:</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0c2de56" class="outline-2">
-<h2 id="org0c2de56"><span class="section-number-2">1</span> Course Goal:</h2>
-<div class="outline-text-2" id="text-1">
+</section>
+<section>
+<section id="slide-org83c227a">
+<h2 id="org83c227a"><span class="section-number-2">1</span> Course Goal:</h2>
 <p>
 Improve your ability to use your computer as a tool for academic activities.
 </p>
@@ -356,12 +150,12 @@ Improve your ability to use your computer as a tool for academic activities.
 <p>
 This leads to the following learning objectives
 </p>
-</div>
-</div>
-<div id="outline-container-org23d957c" class="outline-2">
-<h2 id="org23d957c"><span class="section-number-2">2</span> Learning Objectives:</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
+</section>
+</section>
+<section>
+<section id="slide-orgb208077">
+<h2 id="orgb208077"><span class="section-number-2">2</span> Learning Objectives:</h2>
+<ul>
 <li>Learn how to install software.</li>
 <li>Learn how to work from the command line.</li>
 <li>Learn the rudiments of programming sufficient to allow further progress through self study.</li>
@@ -369,18 +163,20 @@ This leads to the following learning objectives
 <li>Learn how to use version control</li>
 <li>Learn how to write papers that blend code and analyses to generate reproducible research reports.      
 This includes learning
-<ul class="org-ul">
+<ul>
 <li>how to use citation databases</li>
 <li>generate graphics of analyses</li>
 <li>conduct statistical analyses</li>
 <li>generate multiple output formats from a single source file.</li>
+
 </ul></li>
+
 </ul>
-</div>
-</div>
-<div id="outline-container-org700a5f9" class="outline-2">
-<h2 id="org700a5f9"><span class="section-number-2">3</span> Course Mechanics</h2>
-<div class="outline-text-2" id="text-3">
+</section>
+</section>
+<section>
+<section id="slide-org3d28d8b">
+<h2 id="org3d28d8b"><span class="section-number-2">3</span> Course Mechanics</h2>
 <p>
 To meet the learning objectives you will need to <b>do</b> more than you listen or observe. You will also need to break old habits. That means in the beginning it will be harder to do simple things. It also means that in the future things that used to be impossible for you to do will now be possible (but they may still not be easy). Combining computer skills with with your psychology content knowledge makes you more attractive to employers and on a graduate school application. 
 </p>
@@ -388,56 +184,64 @@ To meet the learning objectives you will need to <b>do</b> more than you listen 
 <p>
 Thus, this course will require you to use the Linux operating system (the XUbuntu flavor) and tools available within that space. Later on, after this course, if you wish to return to the world of OSX and Windows10 you will know what you are looking for, and you will have the skills necessary to make it available. 
 </p>
-</div>
-</div>
-<div id="outline-container-orgab7f81c" class="outline-2">
-<h2 id="orgab7f81c"><span class="section-number-2">4</span> Outline</h2>
+</section>
+</section>
+<section>
+<section id="slide-org52a1b60">
+<h2 id="org52a1b60"><span class="section-number-2">4</span> Outline</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgc7d9f98" class="outline-3">
-<h3 id="orgc7d9f98"><span class="section-number-3">4.1</span> Session 1 Installing Linux</h3>
+</section>
+<section id="slide-orgd33fa4a">
+<h3 id="orgd33fa4a"><span class="section-number-3">4.1</span> Session 1 Installing Linux</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org7a33570" class="outline-4">
-<h4 id="org7a33570"><span class="section-number-4">4.1.1</span> Instructions for testing the Live CD and installing to USB</h4>
-<div class="outline-text-4" id="text-4-1-1">
-<ol class="org-ol">
+</section>
+<section id="slide-org1a47dd0">
+<h4 id="org1a47dd0"><span class="section-number-4">4.1.1</span> Instructions for testing the Live CD and installing to USB</h4>
+<ol>
 <li>Learn how to boot your computer from a USB. 
-<ul class="org-ul">
+<ul>
 <li>Mac OSX - start the computer with option key held down</li>
 <li>Windows - may require going into the bios and enable booting usb (usually some key combo of F2 or F10 during the boot process - look for a very briefly flashed screen); followed by rebooting with a different F Key. Another option is to tell Windows to boot from recovery mode. Find the "advanced" menu of the Windows Start Up menu (look in the "recovery" section of the start-up). Select from "another device". Some devices, like Surfaces, have other key combinations.</li>
 <li>Other systems: chrome books; ipads; probably won't work.</li>
 <li>Sometimes it takes a while to figure out which of the options is the Xubuntu option. If one doesn't work, just note what it was and next time try a different one.</li>
+
 </ul></li>
-<li>Run an XUbuntu Live CD
+<li>Run an XUbuntu Live CD (off us USB)
 If problems starting the use without installing option, restart, select install, and then quit from the first screen. That will usually drop you into what you need.</li>
+<li>Make sure to set the screen off and power off power management features to "never". This can hurt you if you are waiting on a download and the computer goes to sleep. It may not wake normally, and it can damage the USB.</li>
 <li>Explore the Live USB
-<ol class="org-ol">
+<ol>
 <li>Connect to the wifi.
-<ol class="org-ol">
-<li>Click up/down arrow in upper right corner of screen.</li>
+<ol>
+<li>Click up/down arrow in upper right corner of the screen.</li>
 <li>Select the correct options (to be demonstrated).
-<ul class="org-ul">
+<ul>
 <li>Authentication: PEAP</li>
 <li>Click box no certificate required</li>
 <li>Use your full watiam address (including the stuff after @ sign usually).</li>
+
 </ul></li>
+
 </ol></li>
 <li>Verify working by opening Firefox Web Browser
-<ol class="org-ol">
+<ol>
 <li>Click little icon upper left.</li>
-<li>From dropdown menu select <i>Web Browser</i>.</li>
+<li>From the dropdown menu select <i>Web Browser</i>.</li>
 <li>Go to <a href="https://uwaterloo.ca">https://uwaterloo.ca</a></li>
+
 </ol></li>
 <li>Explore some of the other programs available in the dropdown menu and under the different headings.
-<ol class="org-ol">
+<ol>
 <li>Which program is like Word for Windows?</li>
 <li>How do you take a screenshot?</li>
 <li>What is the standard email program on this version of Linux?</li>
+
 </ol></li>
 <li>Installing programs
 There is a "gui" installer, but we are going to use the package management system from the command line.
-<ol class="org-ol">
+<ol>
 <li>Open the terminal emulator</li>
 <li>type <code>sudo apt update</code>
 What does <i>sudo</i> mean?</li>
@@ -447,7 +251,9 @@ What does <i>sudo</i> mean?</li>
 <li>Back in terminal type: <code>emacs &amp;</code>.
 What does the ampersand do? It lets things run in the background without freezing the terminal. If you don't know what I mean, then start without the ampersand, and then try to type another command in the terminal. Remember: if you don't know what will happen? Try it (after maybe backing up important files).</li>
 <li>Go to the emacs help menu and under the drop down options pick emacs psychotherapist. Remember it is here when you need some counselling in the first few sessions of this course.</li>
+
 </ol></li>
+
 </ol></li>
 <li>Syllabus review (short break).</li>
 <li>Problems with the live "CD". 
@@ -466,38 +272,41 @@ When you install software you need to make sure that install it to the usb and n
 </p>
 
 <p>
-For more detailed instructions go to the section <a href="#org2921958">Instructions for Burning Xubuntu to a USB</a>
+Note: Don't choose to small a USB. 8GB will work to install the base system just fine, but when you try to add further software you will fill up the disc quickly and then you will have to start all over. 16GB should work, but 32 GB is a safer choice if you imagine downloading a lot of s
+For more detailed instructions go to the section <a href="#/slide-org9b42d00">Instructions for Burning Xubuntu to a USB</a>
 </p></li>
 <li>When you think you are done, shut things down. Remove the live USB/CD, but leave the other one in place. Follow the steps you need to to boot your computer from a USB. If you are able to launch Ubuntu (and it might take a few tries to find the right menu entry) then you will see linux start. Enjoy the feeling of immense power.</li>
 <li>Boot your computer from the <i>new</i> USB and install <b>emacs</b> <i>from the command line</i> again.
-<ol class="org-ol">
+<ol>
 <li>The command line - open up a "terminal". Your terminal will be running a "shell."</li>
 <li>Package Managers
-<ol class="org-ol">
+<ol>
 <li>The ubuntu package manager
 Basic commands: 
-<ul class="org-ul">
+<ul>
 <li>apt update</li>
 <li>apt install</li>
 <li>apt search</li>
 <li>apt remove</li>
+
 </ul></li>
+
 </ol></li>
+
 </ol></li>
 <li>This time you might want to update those old programs.</li>
+
 </ol>
-</div>
-</div>
-<div id="outline-container-org4df3688" class="outline-4">
-<h4 id="org4df3688"><span class="section-number-4">4.1.2</span> Troubleshooting</h4>
-<div class="outline-text-4" id="text-4-1-2">
-<dl class="org-dl">
+</section>
+<section id="slide-orga543293">
+<h4 id="orga543293"><span class="section-number-4">4.1.2</span> Troubleshooting</h4>
+<dl>
 <dt>I don't have a USB port?</dt><dd>Do you have an sdcard port? Yes? You can use that. If you have neither you will need a different computer. It can be a cheap (as in the price of textbook cheap) and old one.</dd>
 <dt>I only have one USB port.</dt><dd><p>
 Can you work with a neighbor to repeat the installation instructions on a second USB that you can use on your machine? If not, you may need something like this. 
 </p>
 
-<div id="orgca65efa" class="figure">
+<div id="org5409e7a" class="figure">
 <p><img src="https://images-na.ssl-images-amazon.com/images/I/81j1TYALbYL._SL1500_.jpg" alt="81j1TYALbYL._SL1500_.jpg" width="50%" />
 </p>
 <p><span class="figure-number">Figure 1: </span>USB Port Expander</p>
@@ -506,13 +315,12 @@ Can you work with a neighbor to repeat the installation instructions on a second
 <dt>I already use Linux.</dt><dd>Good for you. Help a classmate.</dd>
 <dt>What is Linux?</dt><dd>Check wikipedia.</dd>
 <dt>Why use Xubuntu?</dt><dd>Is it different from Ubuntu (Debian, Arch, Fedora, OpenSuse&#x2026;)? Linux is a kernel that powers the system. All the rest are different choices people make of the tools they want to wrap around that "engine." XUbuntu is a reasonably light-weight linux distribution that runs well on slow machines, and yet has enough of a user base to make it reasonably easy to find help on line.</dd>
+
 </dl>
-</div>
-</div>
-<div id="outline-container-orgd9395da" class="outline-4">
-<h4 id="orgd9395da"><span class="section-number-4">4.1.3</span> Homework</h4>
-<div class="outline-text-4" id="text-4-1-3">
-<ol class="org-ol">
+</section>
+<section id="slide-org832b004">
+<h4 id="org832b004"><span class="section-number-4">4.1.3</span> Homework</h4>
+<ol>
 <li>Send me a screenshot of emacs open and running on your laptop.
 Hints: look for xfce4-screenshooter to take the screenshot. Log on to <i>Learn</i> while running linux. Of course that will require you to connect to the internet, and that will require you repeating those steps to configure the connection.</li>
 <li><p>
@@ -536,37 +344,34 @@ Save it with yourlastname-firstname<sub>pkgname.org</sub> as the file name. Uplo
 <p>
 Use the program "mousepad" for the above. 
 </p></li>
+
 </ol>
-</div>
-</div>
-</div>
-<div id="outline-container-org56b7361" class="outline-3">
-<h3 id="org56b7361"><span class="section-number-3">4.2</span> Session 2 Command Line Basics and EMACS Introduction</h3>
+</section>
+<section id="slide-orgb14ae03">
+<h3 id="orgb14ae03"><span class="section-number-3">4.2</span> Session 2 Command Line Basics and EMACS Introduction</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org25c62d8" class="outline-4">
-<h4 id="org25c62d8"><span class="section-number-4">4.2.1</span> Command Line</h4>
+</section>
+<section id="slide-orgd14ced7">
+<h4 id="orgd14ced7"><span class="section-number-4">4.2.1</span> Command Line</h4>
 <div class="outline-text-4" id="text-4-2-1">
 </div>
 <ol class="org-ol">
-<li><a id="org4512501"></a>What is it?<br /></li>
-<li><a id="orge8fd9df"></a>Why use it? <a href="https://www.quora.com/How-important-is-it-to-learn-command-line-interfaces/answers/1620528">One opinion.</a><br />
+<li><a id="org4798489"></a>What is it?<br /></li>
+<li><a id="orgf006f83"></a>Why use it? <a href="https://www.quora.com/How-important-is-it-to-learn-command-line-interfaces/answers/1620528">One opinion.</a><br />
 <ol class="org-ol">
-<li><a id="org75e99fc"></a>The <a href="http://write.flossmanuals.net/command-line/introduction/">Manual</a><br /></li>
+<li><a id="org6a777b0"></a>The <a href="http://write.flossmanuals.net/command-line/introduction/">Manual</a><br /></li>
 </ol>
 </li>
-<li><a id="org0fb583e"></a>Find your terminal?<br />
-<div class="outline-text-5" id="text-4-2-1-3">
+<li><a id="orga0431fd"></a>Find your terminal?<br />
 <p>
 Why is it called the terminal?
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org5cfb957"></a>Operating Systems<br />
-<div class="outline-text-6" id="text-4-2-1-3-1">
-<ul class="org-ul">
+<li><a id="org100a1ed"></a>Operating Systems<br />
+<ul>
 <li>Windows
-<ul class="org-ul">
+<ul>
 <li><a href="https://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/">CMD</a></li>
 <li><a href="https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershell?view=powershell-6">Power Shell</a></li>
 <li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">WSL</a> 
@@ -576,29 +381,32 @@ this will give you access to command line tools, but not to
 graphical tools.</li>
 <li><b><b>Recommended</b></b> If you have windows 10 you can run linux as a
 <a href="https://www.windowscentral.com/how-run-linux-distros-windows-10-using-hyper-v">virtual machine</a>.</li>
+
 </ul></li>
 <li>OSX
-<ul class="org-ul">
+<ul>
 <li>Applications/Utilities/Terminal</li>
 <li>Why don't you have to install a virtual machine to get linux commands on OSX?</li>
+
 </ul></li>
 <li>Linux 
-<ul class="org-ul">
+<ul>
 <li>probably xterm</li>
+
 </ul></li>
+
 </ul>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org4e7e861"></a>Terminal Games<br />
-<div class="outline-text-5" id="text-4-2-1-4">
-<ol class="org-ol">
+<li><a id="org49e039e"></a>Terminal Games<br />
+<ol>
 <li><code>ls -la /home/&lt;username&gt;</code>
-<ul class="org-ul">
+<ul>
 <li>What does all this output mean?</li>
 <li>What changes when you leave out the <code>-la</code>?</li>
 <li>What does the hyphen do?</li>
+
 </ul></li>
 <li>Find the location of your Desktop folder.</li>
 <li>Change to that directory.
@@ -612,18 +420,20 @@ Usually <code>command --help</code> or (<code>-h</code>)</li>
 <li>How do you find the manual?
 <code>man ls</code></li>
 <li>Navigating
-<ol class="org-ol">
+<ol>
 <li>Paths: absolute and relative.</li>
 <li>What do those "dots" mean?</li>
 <li>What do those slashes mean?</li>
 <li>Tab is your friend.</li>
 <li>Try the up arrow too.</li>
+
 </ol></li>
 <li>File ownership
-<ol class="org-ol">
+<ol>
 <li>Make a text file from the command line.
 <code>touch /home/yourname/Documents/testText.txt</code></li>
 <li>Who owns it?</li>
+
 </ol></li>
 <li><p>
 Make a directory
@@ -634,19 +444,18 @@ Make a directory
 Spaces are the enemy. Never use them, but if you have to, escape (<code>\</code>) them.
 </p></li>
 <li>Want more practice? Try the tutorials <a href="https://ryanstutorials.net/linuxtutorial/commandline.php">here</a>.</li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-org492cf91" class="outline-4">
-<h4 id="org492cf91"><span class="section-number-4">4.2.2</span> Exercises Emacs</h4>
+</section>
+<section id="slide-orgf248e8a">
+<h4 id="orgf248e8a"><span class="section-number-4">4.2.2</span> Exercises Emacs</h4>
 <div class="outline-text-4" id="text-4-2-2">
 </div>
 <ol class="org-ol">
-<li><a id="orge837242"></a>Emacs<br />
-<div class="outline-text-5" id="text-4-2-2-1">
-<ol class="org-ol">
+<li><a id="orgbd62ba6"></a>Emacs<br />
+<ol>
 <li>What are Control and Meta used for? What keys are they?
 May depend on your keyboard and operating system. Don't like what they are? <a href="https://www.x.org/releases/current/doc/man/man1/xmodmap.1.xhtml">Remap them</a>.</li>
 <li>Tutorial <code>Ctrl-h t</code> (aka <code>C-h t</code>)</li>
@@ -670,7 +479,8 @@ This can be a bit tricky to get started because you will have to first install <
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">package</span>)
+
+<pre  class="src src-elisp"><code trim>(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">package</span>)
 (add-to-list 'package-archives '(<span style="color: #8b2252;">"melpa"</span> .<span style="color: #8b2252;">"http://melpa.org/packages/"</span>) t)
 (package-initialize)
 
@@ -682,7 +492,7 @@ This can be a bit tricky to get started because you will have to first install <
 (<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">ess</span>
   <span style="color: #483d8b;">:ensure</span> t
   )
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -696,140 +506,132 @@ You can try this code to make sure that gnupg has the directories established th
 <p>
 <code>gpg --homedir /home/&lt;NAMEOFYOURHOMEDIRHERE&gt;/.emacs.d/elpa/gnupg  --keyserver keyserver.ubuntu.com --recv-keys 066DAFCB81E42C40</code>
 </p></li>
+
 </ol>
 
 
-<ol class="org-ol">
+<ol>
 <li>Program your editor
-<ol class="org-ol">
+<ol>
 <li>Turn off the tool bar?</li>
 <li>How? <code>C-h-f</code> will allow you to search for functions. Try the keyword menu and tab and see if you come across a likely contender (<code>menu-bar-showhide-tool-bar-menu-customize-disable</code>).</li>
 <li>Navigate to the scratch buffer. Put that function in parantheses. Move to the end. Type <code>C-x C-e</code>. Did your tool bar go away?</li>
 <li>Point is that you can heavily customize your editor. Don't worry too much about it for now.</li>
+
 </ol></li>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_mono/org.html#Top">Orgmode</a>
-<ol class="org-ol">
+<ol>
 <li>What is it? About the best thing ever.</li>
 <li>Make an outline. Keep a calendar. Add code to your documents. Make links. Include images.</li>
 <li>Practice now:
 Where is the help, remember? <code>C-h i</code>
 Note bene: may need to get <code>sudo apt install emacs25-common-non-dfsg</code> for all the documentation. 
-<ol class="org-ol">
+<ol>
 <li>Learn to use the short cuts to open, save, and so on. That is one of the powers of the command line and similar style tools. Enhance your productivity and control.</li>
 <li>Create an outline.</li>
 <li>Create a link</li>
 <li>Insert an image</li>
 <li>Export as a web page.</li>
 <li>What would you need to export a pdf?
-Try installing <code>texlive-latex-recommended</code>. If that doesn't fix the problem go with <code>texlive-full</code>. This is big.</li>
+Try installing <code>texlive-latex-base texlive-latex-extra</code>. If that doesn't work, repeat with <code>texlive-latex-recommended</code>. If that doesn't fix the problem go with <code>texlive-full</code>. This is big. Be patient.</li>
+
 </ol></li>
+
 </ol></li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-orge5372d7" class="outline-3">
-<h3 id="orge5372d7"><span class="section-number-3">4.3</span> Session 3 Version Control Github and Beginning With Python</h3>
+</section>
+<section id="slide-orgb2a14da">
+<h3 id="orgb2a14da"><span class="section-number-3">4.3</span> Session 3 Version Control Github and Beginning With Python</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
-<div id="outline-container-org0f0fda6" class="outline-4">
-<h4 id="org0f0fda6"><span class="section-number-4">4.3.1</span> Version Control</h4>
+</section>
+<section id="slide-orgac7f13b">
+<h4 id="orgac7f13b"><span class="section-number-4">4.3.1</span> Version Control</h4>
 <div class="outline-text-4" id="text-4-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="org635cf10"></a>Git<br />
-<div class="outline-text-5" id="text-4-3-1-1">
+<li><a id="org8fc9ee3"></a>Git<br />
 <p>
 <b><b>Not</b></b> the same as Github, though that is one of the more common <i>social</i> uses of git for sharing and collaborating on code. 
 </p>
-</div>
 </li>
-<li><a id="org5315548"></a>Social Coding and Data Sharing<br />
-<div class="outline-text-5" id="text-4-3-1-2">
+<li><a id="org15ead17"></a>Social Coding and Data Sharing<br />
 <p>
 A brief discussion of what is going on here.
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org092da92"></a>OSF.io<br />
-<div class="outline-text-6" id="text-4-3-1-2-1">
-<ol class="org-ol">
+<li><a id="org73df4a8"></a>OSF.io<br />
+<ol>
 <li>Sign up</li>
 <li>Find my projects</li>
-</ol>
-</div>
-</li>
+
 </ol>
 </li>
-<li><a id="org4898f79"></a>Installation of Git<br />
-<div class="outline-text-5" id="text-4-3-1-3">
+</ol>
+</li>
+<li><a id="org87720b1"></a>Installation of Git<br />
 <p>
 <code>sudo apt install git</code>
 </p>
-</div>
 </li>
-<li><a id="orgf6ea51e"></a>Github and Gitlab and Bitbucket and &#x2026;<br />
-<div class="outline-text-5" id="text-4-3-1-4">
-<ol class="org-ol">
+<li><a id="org58bc6b3"></a>Github and Gitlab and Bitbucket and &#x2026;<br />
+<ol>
 <li>Github is the big one with a large external presence.
-<ol class="org-ol">
+<ol>
 <li>Sign-up</li>
+
 </ol></li>
 <li>The university provides you with a gitlab presence at <a href="https://git.uwaterloo.ca">https://git.uwaterloo.ca</a></li>
+
 </ol>
-</div>
 </li>
-<li><a id="org0493cde"></a>Git<br />
-<div class="outline-text-5" id="text-4-3-1-5">
-<ol class="org-ol">
+<li><a id="org1660092"></a>Git<br />
+<ol>
 <li>Open a terminal</li>
 <li>Move (<code>cd</code> or <code>dir</code>) into your Desktop</li>
 <li>type <code>git init myrepo</code></li>
 <li>Should see message from the terminal prompt that it has been created.</li>
 <li>Feel free to delete (e.g. <code>rm -rf ./myrepo</code>)</li>
+
 </ol>
-</div>
 </li>
-<li><a id="org3782a58"></a>Making and Cloning a Course Repo<br />
-<div class="outline-text-5" id="text-4-3-1-6">
-<ol class="org-ol">
+<li><a id="org870f825"></a>Making and Cloning a Course Repo<br />
+<ol>
 <li>I create an empty repository on github</li>
 <li>I create a repository on my laptop.</li>
 <li>I add some small file.</li>
 <li>I set the upstream (origin) as the github site, and then I push.</li>
 <li>Now if I use a different computer I can push and pull (to be discussed) from this github site and keep everything synced together.</li>
+
 </ol>
-</div>
 </li>
-<li><a id="org63ee37f"></a>Demo the Course Git Site<br />
-<div class="outline-text-5" id="text-4-3-1-7">
+<li><a id="org84a27c8"></a>Demo the Course Git Site<br />
 <p>
 I am keeping back-ups of my notes for this course on github. You can get everything I create by cloning this repository.
 </p>
-<ol class="org-ol">
+<ol>
 <li>Go to <a href="https://github.com/brittAnderson/psych363">Course Repo on Github</a></li>
 <li>Use that url to clone a copy to your laptop (or to fork a version to your github account). Occassionally <code>pull</code> in any changes or updates.</li>
 <li>You will probably find it easier to skip the fork step for any repository that you are just going to use, but not change.</li>
+
 </ol>
-</div>
 </li>
-<li><a id="orga2f1824"></a>Magit<br />
-<div class="outline-text-5" id="text-4-3-1-8">
-<ol class="org-ol">
+<li><a id="orgbf2d37a"></a>Magit<br />
+<ol>
 <li>Emacs provides you with an interface for this called magit.</li>
 <li>To use it you will have to create an init file (and delete ~/.emacs)
 Let's you discover the hidden directories.</li>
 <li>You will have to enable emacs package repositories (everyone in linux land has a package manager).</li>
 <li>You will need to install the magit package.</li>
 <li>Then it is <code>C-c m</code> or <code>M-x magit</code></li>
+
 </ol>
-</div>
 </li>
-<li><a id="org87d0613"></a>Forks and Clones and Pull Requests&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
-<div class="outline-text-5" id="text-4-3-1-9">
-<ol class="org-ol">
+<li><a id="orga0721d9"></a>Forks and Clones and Pull Requests&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
+<ol>
 <li>Diagram the logic on the board.</li>
 <li>Get everyone to create a fork of the course repository</li>
 <li>Get everyone to create a local clone on their laptop</li>
@@ -840,21 +642,20 @@ Let's you discover the hidden directories.</li>
 <li>Add a new file to your laptop version.</li>
 <li>Push this to your fork.</li>
 <li>From github generate a pull request for me. This is one of this weeks homeworks.</li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-org58426ad" class="outline-4">
-<h4 id="org58426ad"><span class="section-number-4">4.3.2</span> Beginning Python</h4>
+</section>
+<section id="slide-orgf282e74">
+<h4 id="orgf282e74"><span class="section-number-4">4.3.2</span> Beginning Python</h4>
 <div class="outline-text-4" id="text-4-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="org2786b43"></a>Python<br />
-<div class="outline-text-5" id="text-4-3-2-1">
-<ol class="org-ol">
+<li><a id="orgb8a027b"></a>Python<br />
+<ol>
 <li>Test for Python in a terminal.
-<ul class="org-ul">
+<ul>
 <li>open a terminal</li>
 <li>type <code>python --version</code> then <code>enter</code></li>
 <li>If you see an answer you have python. Type <code>python</code>. Note the cursor has changed.</li>
@@ -862,60 +663,54 @@ Let's you discover the hidden directories.</li>
 <li>Do you see 4?</li>
 <li>type <code>quit()</code> to exit.</li>
 <li>Why do you need to have the parentheses after the word quit?</li>
+
 </ul></li>
 <li>If you only have version 2 try the command again with <code>python3 --version</code>.</li>
 <li>If you don't have python3, get it (may want the python3-dev version; often the hyphen -dev packages will work better for you as a bleeding edge user).</li>
+
 </ol>
-</div>
 </li>
-<li><a id="org044ee10"></a>Coding - General<br />
-<div class="outline-text-5" id="text-4-3-2-2">
+<li><a id="org481593f"></a>Coding - General<br />
 <p>
 Coding - providing instructions to a computer.
 The computer only does what you tell it. 
 </p>
-</div>
 </li>
-<li><a id="org45061a2"></a>Writing Code<br />
-<div class="outline-text-5" id="text-4-3-2-3">
+<li><a id="orgba17cac"></a>Writing Code<br />
 <p>
 Code files are just plain text. You can open and write them in anything, though some tools can make the writing substantially easier. Usually extensions identify a language (e.g. .py for python and .R for R). 
 </p>
-</div>
 </li>
-<li><a id="org0eece7d"></a>Testing Code<br />
+<li><a id="org0d7fb9a"></a>Testing Code<br />
 <ol class="org-ol">
-<li><a id="orgb227cf5"></a>Interactive<br />
-<div class="outline-text-6" id="text-4-3-2-4-1">
+<li><a id="org8656941"></a>Interactive<br />
 <p>
 We already did a little of this, but let's try again.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myadd</span>(a,b):
-    <span style="color: #a020f0;">return</span>(a+b)
-</pre>
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myadd</span>(a,b):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">return</span>(a+b)
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">print</span>(myadd(3,4))
-</pre>
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">print</span>(myadd(3,4))
+</code></pre>
 </div>
 
 <pre class="example">
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-NameError: name 'myadd' is not defined
-</pre>
+7
 
+</pre>
 
 <p>
 For interactive session it is like you are interacting with a user. You type your lines one or a few at a time, get an answer, and then decide what to do next. 
 </p>
-</div>
 </li>
-<li><a id="org2c43a74"></a>Script<br />
-<div class="outline-text-6" id="text-4-3-2-4-2">
+<li><a id="orgdac8861"></a>Script<br />
 <p>
 You write a separate file that you read in, or import and use. Here is the file.
 </p>
@@ -929,35 +724,34 @@ def add2(a,b):
 def addMany(aa):
     ans = 0
     for a in aa:
-        ans = ans + a
+	ans = ans + a
     return(ans)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> code.testScript <span style="color: #a020f0;">import</span> *
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">from</span> code.testScript <span style="color: #a020f0;">import</span> *
 
 <span style="color: #a020f0;">print</span>(add2(3,4))
 
 <span style="color: #a020f0;">print</span>(addMany([1,2,3,4,5,6]))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 7
 21
-</pre>
 
+</pre>
 
 <p>
 Try creating this file and then typing these commands in your terminal. For various weird reasons if you want the test script to be in a subdirectory of where you are working you will need a file <code>__init__.py</code> to trick python into treating it as a package. See the <a href="https://docs.python.org/3/tutorial/modules.html#packages">documentation</a> and this <a href="https://stackoverflow.com/questions/1260792/import-a-file-from-a-subdirectory">stackOverflow answer</a>.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="orgb7e8541"></a>Confirming You Can Write and Run a Python File&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
-<div class="outline-text-5" id="text-4-3-2-5">
-<ol class="org-ol">
+<li><a id="org3601da8"></a>Confirming You Can Write and Run a Python File&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
+<ol>
 <li>Create a file <code>lastname.py</code></li>
 <li>Write the myadd function I demonstrated, but give it a different name.</li>
 <li>Save.</li>
@@ -967,59 +761,58 @@ Try creating this file and then typing these commands in your terminal. For vari
 <li>Use your function.</li>
 <li>Take a screenshot of your terminal session showing the above session.</li>
 <li>Submit that for your homework <b>along with your lastname.py file</b>.</li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-org8d8ca0f" class="outline-3">
-<h3 id="org8d8ca0f"><span class="section-number-3">4.4</span> Session 4 Python</h3>
+</section>
+<section id="slide-org0ad8919">
+<h3 id="org0ad8919"><span class="section-number-3">4.4</span> Session 4 Python</h3>
 <div class="outline-text-3" id="text-4-4">
 </div>
-<div id="outline-container-org8692161" class="outline-4">
-<h4 id="org8692161"><span class="section-number-4">4.4.1</span> Types</h4>
-<div class="outline-text-4" id="text-4-4-1">
-<dl class="org-dl">
+</section>
+<section id="slide-org3edd463">
+<h4 id="org3edd463"><span class="section-number-4">4.4.1</span> Types</h4>
+<dl>
 <dt>Integers</dt><dd>1, 2, &#x2026;</dd>
 <dt>Doubles/Floats</dt><dd>10.3, pi</dd>
 <dt>Booleans</dt><dd>True , False 
 NB: some languages, e.g. R, use TRUE.</dd>
 <dt>(no term)</dt><dd>Lists and Tuples
-<dl class="org-dl">
+<dl>
 <dt>Tuples</dt><dd>(1,2), ('a',10.34,False) Have a fixed number of slots, can be different types.
 Define with parentheses</dd>
 <dt>Lists </dt><dd>[1,2,3,4] Have a potentially infinite number of slots, but must all be same type.
 Define with square brackets.</dd>
+
 </dl></dd>
 <dt>Dictionaries</dt><dd>{'firstName' : 'Britt', 'lastName' : 'Anderson'}</dd>
 <dt>Comments</dt><dd>Not really code, but allows you to put stuff in your programs for other users and yourself to read. In python the lines start with a hash "#"</dd>
+
 </dl>
-</div>
-</div>
-<div id="outline-container-org14f2e58" class="outline-4">
-<h4 id="org14f2e58"><span class="section-number-4">4.4.2</span> Constants and Variables</h4>
-<div class="outline-text-4" id="text-4-4-2">
+</section>
+<section id="slide-orgd385c2f">
+<h4 id="orgd385c2f"><span class="section-number-4">4.4.2</span> Constants and Variables</h4>
 <p>
 A conceptual difference more than a implementation difference
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">NOHRSDAY</span> = 24
+
+<pre  class="src src-python"><code trim><span style="color: #a0522d;">NOHRSDAY</span> = 24
 
 <span style="color: #a0522d;">x</span> = NOHRSDAY
 
 x
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 24
+
 </pre>
-</div>
 
 <ol class="org-ol">
-<li><a id="orgdaf6d81"></a>Coding styles<br />
-<div class="outline-text-5" id="text-4-4-2-1">
+<li><a id="orgf1c2b01"></a>Coding styles<br />
 <p>
 Makes your code easier to read by people using the same language.
 </p>
@@ -1031,52 +824,47 @@ Try to follow good programming style, and if avaialable, langugage guides.
 <p>
 <a href="https://www.python.org/dev/peps/pep-0008/">Python Style Guide</a>
 </p>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-org4eedf17" class="outline-4">
-<h4 id="org4eedf17"><span class="section-number-4">4.4.3</span> Assignment and Equality</h4>
-<div class="outline-text-4" id="text-4-4-3">
+</section>
+<section id="slide-orga646d1b">
+<h4 id="orga646d1b"><span class="section-number-4">4.4.3</span> Assignment and Equality</h4>
 <p>
 <code>=</code> is different from <code>==</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">a</span> = 2
+
+<pre  class="src src-python"><code trim><span style="color: #a0522d;">a</span> = 2
 <span style="color: #a020f0;">print</span>(a == 3)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 False
-</pre>
-</div>
-</div>
 
-<div id="outline-container-org9762ddc" class="outline-4">
-<h4 id="org9762ddc"><span class="section-number-4">4.4.4</span> Loops</h4>
-<div class="outline-text-4" id="text-4-4-4">
+</pre>
+
+</section>
+<section id="slide-org885f6c7">
+<h4 id="org885f6c7"><span class="section-number-4">4.4.4</span> Loops</h4>
 <p>
 Think of recipes: "stir egg whites until peaked" or "simmer for 30 minutes". That is the intuition for a 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org89d40c6"></a>For<br />
-<div class="outline-text-5" id="text-4-4-4-1">
+<li><a id="org7d71ab6"></a>For<br />
 <p>
 Python refers to things called "iterables." To iterate is another way of saying something you can keep doing the same thing over and over to. Imagine a bowl of ice cream. It is "eatable". You take one spoon, and keep taking spoonfuls until the bowl is empty. 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgb59f802"></a>Indexing<br />
-<div class="outline-text-6" id="text-4-4-4-1-1">
+<li><a id="orgf3bf90c"></a>Indexing<br />
 <p>
 You can get the location of an element in a list by referring to its <i>index</i>. Indexes start at 0 for many computer languages, but not all (e.g. R and Matlab). There are various shorthands for getting ranges of elements or the last element.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org681a0f6"><span style="color: #a0522d;">nameDict</span> = {<span style="color: #8b2252;">'firstName'</span> : <span style="color: #8b2252;">'Britt'</span>, <span style="color: #8b2252;">'lastName'</span> : <span style="color: #8b2252;">'Anderson'</span>}
+
+<pre  class="src src-python" id="Indexing"><code trim><span style="color: #a0522d;">nameDict</span> = {<span style="color: #8b2252;">'firstName'</span> : <span style="color: #8b2252;">'Britt'</span>, <span style="color: #8b2252;">'lastName'</span> : <span style="color: #8b2252;">'Anderson'</span>}
 <span style="color: #a0522d;">mylist</span> = <span style="color: #483d8b;">list</span>(<span style="color: #483d8b;">range</span>(1,10))
 
 <span style="color: #a020f0;">print</span>(nameDict[<span style="color: #8b2252;">'firstName'</span>])
@@ -1088,7 +876,7 @@ You can get the location of an element in a list by referring to its <i>index</i
 <span style="color: #a020f0;">print</span>(mylist[-1])
 
 <span style="color: #a020f0;">print</span>(mylist[0:4])
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1097,18 +885,19 @@ Britt
 1
 9
 [1, 2, 3, 4]
-</pre>
 
+</pre>
 
 
 <div class="org-src-container">
-<pre class="src src-python" id="org103bea9"><span style="color: #a020f0;">for</span> ml <span style="color: #a020f0;">in</span> mylist:
-    <span style="color: #a020f0;">print</span>(ml)
+
+<pre  class="src src-python" id="For Loop"><code trim><span style="color: #a020f0;">for</span> ml <span style="color: #a020f0;">in</span> mylist:
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(ml)
 
 
 <span style="color: #a020f0;">for</span> i,ml <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(mylist):
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"The {0}th element was {1}"</span>.<span style="color: #483d8b;">format</span>(i,ml))
-</pre>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"The {0}th element was {1}"</span>.<span style="color: #483d8b;">format</span>(i,ml))
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1131,34 +920,34 @@ The 6th element was 7
 The 7th element was 8
 The 8th element was 9
 </pre>
-</div>
 </li>
-<li><a id="orgb3ee0b7"></a>For Class Exercise<br />
-<div class="outline-text-6" id="text-4-4-4-1-2">
-<ol class="org-ol">
+<li><a id="org686d98d"></a>For Class Exercise<br />
+<ol>
 <li>Create a list of at least 8 individual characters.</li>
 <li>Make sure they are <b><b>not</b></b> in alphabetical order</li>
 <li>Print the letters one at a time.</li>
 <li>Print the letters sorted alphabetically one at a time, but <i>do not</i> overwrite your original list.</li>
 <li>Print the letters from both lists with a format command that says which position the letter is in.</li>
+
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-python" id="orgf395cdf"><span style="color: #a0522d;">myList</span> = <span style="color: #483d8b;">list</span>(<span style="color: #8b2252;">"brittAnderson"</span>)
+
+<pre  class="src src-python" id="Class Demo For Command Exercise"><code trim><span style="color: #a0522d;">myList</span> = <span style="color: #483d8b;">list</span>(<span style="color: #8b2252;">"brittAnderson"</span>)
 <span style="color: #a020f0;">for</span> l <span style="color: #a020f0;">in</span> myList:
-    <span style="color: #a020f0;">print</span>(l)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(l)
 <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"end of list 1\n"</span>)
 
 
 <span style="color: #a020f0;">for</span> l <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">sorted</span>(myList):
-    <span style="color: #a020f0;">print</span>(l)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(l)
 <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"end of list 2\n"</span>)
 
 
 <span style="color: #a020f0;">for</span> i,l <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">enumerate</span>(<span style="color: #483d8b;">zip</span>(myList,<span style="color: #483d8b;">sorted</span>(myList))):
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"The {0}th letter of myList is: {1}, but is {2} in the sorted list."</span>.<span style="color: #483d8b;">format</span>(i,l[0],l[1]))
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"The {0}th letter of myList is: {1}, but is {2} in the sorted list."</span>.<span style="color: #483d8b;">format</span>(i,l[0],l[1]))
 <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Thus ends the lesson"</span>)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1207,46 +996,42 @@ The 11th letter of myList is: o, but is t in the sorted list.
 The 12th letter of myList is: n, but is t in the sorted list.
 Thus ends the lesson
 </pre>
-</div>
 </li>
 </ol>
 </li>
 
-<li><a id="org1a68e7f"></a>While<br />
-<div class="outline-text-5" id="text-4-4-4-2">
+<li><a id="org1fbf977"></a>While<br />
 <p>
 These are like for loops in that they do stuff over and over, but unlike for loops they do things indefinitely, until that is, you tell them to stop. How do you do that? You use a predicate that they test for each time through the loop. That means you need to specify a <i>predicate.</i>
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgd8eaf48"></a>Conditionals<br />
-<div class="outline-text-6" id="text-4-4-4-2-1">
+<li><a id="org955932d"></a>Conditionals<br />
 <p>
 This is where you test whether something is or is not <code>True</code>. Note that Python, but not all computer languages, treats 0 as the same as False, and all non-zero values as True. 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">if</span> (2 == 3):
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Wha.....?\n\n"</span>)
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">if</span> (2 == 3):
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Wha.....?\n\n"</span>)
 <span style="color: #a020f0;">elif</span> (3 == 2):
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Now that is odd"</span>)
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"Now that is odd"</span>)
 <span style="color: #a020f0;">else</span>:
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"2 does not equal 3."</span>)
-</pre>
-</div>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"2 does not equal 3."</span>)
+</code></pre>
 </div>
 </li>
-<li><a id="org47d43cf"></a>While<br />
-<div class="outline-text-6" id="text-4-4-4-2-2">
+<li><a id="org7b6a23e"></a>While<br />
 <p>
 NB: note the use of colon (:) at the end of the <code>for</code> and <code>while</code> lines. 
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">i</span> = 0
+
+<pre  class="src src-python"><code trim><span style="color: #a0522d;">i</span> = 0
 <span style="color: #a020f0;">while</span> (i&lt;=10):
-    <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"brittAnderson"</span>[i])
-    <span style="color: #a0522d;">i</span> = i+1
-</pre>
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a020f0;">print</span>(<span style="color: #8b2252;">"brittAnderson"</span>[i])
+<span style="background-color: #f2f2f2;"> </span>   <span style="color: #a0522d;">i</span> = i+1
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1262,44 +1047,43 @@ e
 r
 s
 </pre>
-</div>
 </li>
 </ol>
 </li>
 </ol>
-</div>
 
-<div id="outline-container-org1a8253a" class="outline-4">
-<h4 id="org1a8253a"><span class="section-number-4">4.4.5</span> Functions</h4>
-<div class="outline-text-4" id="text-4-4-5">
+</section>
+<section id="slide-org77c3332">
+<h4 id="org77c3332"><span class="section-number-4">4.4.5</span> Functions</h4>
 <p>
 You have seen an example of this before. Think of a function as a machine that grinds meat. You pour in a cow. You get out hamburger. Input. Output. Note that arguments are "local". They are not referring to variables outside, in the program globally, but only make sense locally in the function. You drop values into those slots, and they you can use those names  in your function, because until you use it, your function doesn't know what it will be getting. 
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myadd</span>(x,y):
-   <span style="color: #a020f0;">return</span>(x+y)
-</pre>
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myadd</span>(x,y):
+<span style="background-color: #f2f2f2;"> </span>  <span style="color: #a020f0;">return</span>(x+y)
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python">myadd(2,3)
-</pre>
+
+<pre  class="src src-python"><code trim>myadd(2,3)
+</code></pre>
 </div>
 
 <pre class="example">
 5
+
 </pre>
-</div>
 
 <ol class="org-ol">
-<li><a id="orgee52a6b"></a>Class Exercise with Functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
+<li><a id="orgd686197"></a>Class Exercise with Functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
 <ol class="org-ol">
-<li><a id="org62147e9"></a>Hangman Game<br />
-<div class="outline-text-6" id="text-4-4-5-1-1">
+<li><a id="orgf25aa05"></a>Hangman Game<br />
 <p>
 You will be required to turn this in, but you can get started now. 
 </p>
-<ol class="org-ol">
+<ol>
 <li>Look up how to get user input from python on the command line.</li>
 <li>Write a script that implements elements of the hangman game.</li>
 <li>Your script should ask for guesses for letters in the word.</li>
@@ -1307,23 +1091,20 @@ You will be required to turn this in, but you can get started now.
 <li>Track that guesses have not exceeded max</li>
 <li>Report if one or lost.</li>
 <li>I will give some hints and examples in class to start us off.</li>
-</ol>
-</div>
-</li>
+
 </ol>
 </li>
 </ol>
-</div>
-<div id="outline-container-orgef49820" class="outline-4">
-<h4 id="orgef49820"><span class="section-number-4">4.4.6</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span></h4>
-<div class="outline-text-4" id="text-4-4-6">
+</li>
+</ol>
+</section>
+<section id="slide-org14e969c">
+<h4 id="org14e969c"><span class="section-number-4">4.4.6</span> Libraries&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span></h4>
 <p>
 Lots of people use python. If you can think that someone ought to have done &#x2026; they probably have. Use libraries whenever you can, because &#x2026; discussion points. 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org6e60ee0"></a>What are some popular libraries?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span>&#xa0;<span class="homework">homework</span></span><br />
-<div class="outline-text-5" id="text-4-4-6-1">
+<li><a id="org1cd6bb2"></a>What are some popular libraries?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span>&#xa0;<span class="homework">homework</span></span><br />
 <p>
 <a href="https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/">Here</a> are 20 recommended ones.
 </p>
@@ -1331,12 +1112,13 @@ Lots of people use python. If you can think that someone ought to have done &#x2
 <p>
 Of particular note for us are:
 </p>
-<ol class="org-ol">
+<ol>
 <li>Numpy</li>
 <li>Scipy</li>
 <li>Matplotlib</li>
 <li>Pillow</li>
 <li>Sympy</li>
+
 </ol>
 
 <p>
@@ -1346,29 +1128,23 @@ Divide class into small groups. Assign a library. Have them present to us what i
 <p>
 Homework: Submit a short .py script to the class github repo that demonstrates the importation of your library and some basic use. 
 </p>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-org0b1839a" class="outline-4">
-<h4 id="org0b1839a"><span class="section-number-4">4.4.7</span> Programs</h4>
-<div class="outline-text-4" id="text-4-4-7">
+</section>
+<section id="slide-org2d87a64">
+<h4 id="org2d87a64"><span class="section-number-4">4.4.7</span> Programs</h4>
 <p>
 Nothing else really, but the more prolonged and complicated concatenation of the above. 
 </p>
-</div>
-</div>
-<div id="outline-container-orgda02f45" class="outline-4">
-<h4 id="orgda02f45"><span class="section-number-4">4.4.8</span> Debugging and Basic Working Methods</h4>
-<div class="outline-text-4" id="text-4-4-8">
+</section>
+<section id="slide-org07cd9fb">
+<h4 id="org07cd9fb"><span class="section-number-4">4.4.8</span> Debugging and Basic Working Methods</h4>
 <p>
 The most basic is just to <code>print</code> statements into your code so that you can see what happening and whether your variables are actually what you think they should be. 
 </p>
-</div>
-</div>
-<div id="outline-container-org7cb497d" class="outline-4">
-<h4 id="org7cb497d"><span class="section-number-4">4.4.9</span> IDEs</h4>
-<div class="outline-text-4" id="text-4-4-9">
+</section>
+<section id="slide-org3a0838b">
+<h4 id="org3a0838b"><span class="section-number-4">4.4.9</span> IDEs</h4>
 <p>
 What does IDE stand for?
 </p>
@@ -1380,15 +1156,16 @@ What are common IDEs for python and how do you get them. What are they good for.
 <p>
 Two popular ones are:
 </p>
-<ol class="org-ol">
+<ol>
 <li>Spyder</li>
 <li>pyCharm</li>
+
 </ol>
 
 <p>
 This is what you need to use for this course: emacs.
 </p>
-<ol class="org-ol">
+<ol>
 <li>Open up a blank file with a name that ends in .py</li>
 <li>Type in some lines (e.g. a = 2, b = 3, print(a+b))</li>
 <li>Type C-c C-c on the first line.</li>
@@ -1398,11 +1175,12 @@ This is what you need to use for this course: emacs.
 <li>When your cursor is on a python word, like <code>print</code>, look in the mode line.</li>
 <li>Try M-x linum-mode</li>
 <li>To see some fancier stuff install the <code>elpy</code> package for emacs.
-<ol class="org-ol">
+<ol>
 <li>M-x package-list-packages</li>
 <li>C-s elpy</li>
 <li>type "i"</li>
 <li>type "x"</li>
+
 </ol></li>
 <li>An easier way to get and maintain your emacs package is "use-package". See some instructions <a href="https://elpy.readthedocs.io/en/latest/introduction.html#overview">here</a>.</li>
 <li>When you try <code>(elpy-enable)</code> you will get error messages. Why? You don't have all the dependencies.</li>
@@ -1412,52 +1190,49 @@ This is what you need to use for this course: emacs.
 What no pip? Welcome to the world of using your computer (and dependency hell). 
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">sudo apt install python-pip
+
+<pre  class="src src-sh"><code trim>sudo apt install python-pip
 pip install jedi rope flake8 autopep8 yapf black
-</pre>
+</code></pre>
 </div></li>
 <li>Then reinstall elpy. Whoooo - wipes brow.</li>
 <li><p>
 No! Needs to be for python3. Repeat all the above for python3 and then customize your emacs python shell command like this
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">M-x customize-variable python-shell-interpreter
-</pre>
+
+<pre  class="src src-sh"><code trim>M-x customize-variable python-shell-interpreter
+</code></pre>
 </div></li>
 <li>Check out the elpy <a href="https://elpy.readthedocs.io/en/latest/introduction.html#overview">documentation</a>. Lots of cool features to make your programming easier.</li>
+
 </ol>
 
 <p>
 Why do you have to do all this? Because Mama a'int spoon feeding you anymore boys and girls. 
 </p>
-</div>
-</div>
 
-<div id="outline-container-org3350c87" class="outline-4">
-<h4 id="org3350c87"><span class="section-number-4">4.4.10</span> Pip to Install Libraries and Virtual Environments</h4>
+</section>
+<section id="slide-org5e918ba">
+<h4 id="org5e918ba"><span class="section-number-4">4.4.10</span> Pip to Install Libraries and Virtual Environments</h4>
 <div class="outline-text-4" id="text-4-4-10">
 </div>
 <ol class="org-ol">
-<li><a id="org1384bea"></a>Pip<br />
-<div class="outline-text-5" id="text-4-4-10-1">
+<li><a id="orgdf38e24"></a>Pip<br />
 <p>
 pip is the python install package program. There have been many ways to install python packages over the years and you will find a lot of tracks on the internet. There is a new system coming called wheel, but for now stick with pip (ubuntu also has many of these packages, but I find it better to try and not to mix package managers. Use your choice; mine is pip.
 </p>
-</div>
 </li>
-<li><a id="org6793704"></a>Virtual Environments<br />
-<div class="outline-text-5" id="text-4-4-10-2">
+<li><a id="org2cf39f6"></a>Virtual Environments<br />
 <p>
 You have system installations of things (like python and its libraries). Now you need to install something new for development purposes. You don't want different version of the same program clashing. The solution is to install your development version of libraries in a "virtual" environment. That is you trick your machine into thinking that a different directory is the root of everything, and thus it can install locally without disturbing your other system files. There are various subtle variations of this arrangement that may be important for different scenarios and use cases. There is also more than one virtual environment tool out there. We will be using and testing the built-in one. 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgebc074b"></a><span class="todo TODO">TODO</span> VENV<br />
-<div class="outline-text-6" id="text-4-4-10-2-1">
-<ol class="org-ol">
+<li><a id="org5642e2e"></a><span class="todo TODO">TODO</span> VENV<br />
+<ol>
 <li><a href="https://docs.python.org/3/library/venv.html">Link</a> to the python description page</li>
 <li>Creating a venv and downloading <a href="https://www.psychopy.org/about/index.html">Psychopy</a> (to be used later in the course).
-<ol class="org-ol">
+<ol>
 <li>First create a directory where you will store/keep your psychopy installation. Maybe something like:
 <code>mkdir /home/britt/research/psychopy/</code></li>
 <li>change to that directory</li>
@@ -1476,42 +1251,43 @@ Note this is just the name of my directory. Yours will be named differently.</li
 <li>The run python &lt;path&gt;/face<sub>jpg.py</sub>
 NB: I am having trouble getting pyglet windows to work, but pygame seems fine. (pip uninstall pyglet; then pip install pyglet==1.3)</li>
 <li>For an exercise, have them get cheese and change out the picture to use their own face? Maybe use gimp or inkscape to select the face and make rest transparent? <b><b>TODO</b></b></li>
+
 </ol></li>
-</ol>
-</div>
-</li>
+
 </ol>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-org00f5b8e" class="outline-3">
-<h3 id="org00f5b8e"><span class="section-number-3">4.5</span> Session 5 R</h3>
+</li>
+</ol>
+</section>
+<section id="slide-orgb571e1c">
+<h3 id="orgb571e1c"><span class="section-number-3">4.5</span> Session 5 R</h3>
 <div class="outline-text-3" id="text-4-5">
 </div>
-<div id="outline-container-org7c88226" class="outline-4">
-<h4 id="org7c88226"><span class="section-number-4">4.5.1</span> R</h4>
-<div class="outline-text-4" id="text-4-5-1">
-<ol class="org-ol">
+</section>
+<section id="slide-org48c37a8">
+<h4 id="org48c37a8"><span class="section-number-4">4.5.1</span> R</h4>
+<ol>
 <li>Test for R from a terminal.
-<ul class="org-ul">
+<ul>
 <li>open terminal</li>
 <li>type <code>r</code> then <code>enter</code></li>
 <li>type <code>2 + 2 enter</code></li>
 <li>Do you see 4?</li>
 <li>type <code>quit()</code> to exit.</li>
+
 </ul></li>
 <li>Test for R in Emacs
-<ul class="org-ul">
+<ul>
 <li><code>M-x R</code></li>
 <li>if this doesn't work install <code>ESS</code> for emacs (Emacs Speaks Statistics)</li>
+
 </ul></li>
+
 </ol>
-</div>
-</div>
-<div id="outline-container-org215352d" class="outline-4">
-<h4 id="org215352d"><span class="section-number-4">4.5.2</span> Getting R</h4>
-<div class="outline-text-4" id="text-4-5-2">
+</section>
+<section id="slide-org099acc8">
+<h4 id="org099acc8"><span class="section-number-4">4.5.2</span> Getting R</h4>
 <p>
 How might you do it?
 <code>sudo apt install r-base-core</code>
@@ -1520,47 +1296,45 @@ How might you do it?
 <p>
 This is a pretty large download with a lot of dependencies. It make take a while. 
 </p>
-</div>
-</div>
-<div id="outline-container-orga449387" class="outline-4">
-<h4 id="orga449387"><span class="section-number-4">4.5.3</span> R Coding Basics - compare</h4>
-</div>
-<div id="outline-container-orge77221d" class="outline-4">
-<h4 id="orge77221d"><span class="section-number-4">4.5.4</span> Types</h4>
-<div class="outline-text-4" id="text-4-5-4">
+</section>
+<section id="slide-org8eb4fbf">
+<h4 id="org8eb4fbf"><span class="section-number-4">4.5.3</span> R Coding Basics - compare</h4>
+</section>
+<section id="slide-org2100c80">
+<h4 id="org2100c80"><span class="section-number-4">4.5.4</span> Types</h4>
 <p>
 R has many of the same types, but also makes much greater use of lists where there are names and elements (rather like a python dictionary). Many built-in statistical functions will return S3 or S4 objects. The point isn't to know what they are, as to know that there are special types in R that have special handling in R.
 </p>
 
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 1: </span>Use the function <code>typeof</code> in R to determine the datatype of a variable.</label><pre class="src src-R" id="orga9b63a0">a = 1
+<label class="org-src-name">Use the function <code>typeof</code> in R to determine the datatype of a variable.</label>
+<pre  class="src src-R" id="typeof"><code trim>a = 1
 typeof(a)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 double
+
 </pre>
 
-
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 2: </span>Lists, Tuples, Data.Frames and Data.Tables</label><pre class="src src-R" id="orgd8b2d1d">tpl = c(1,2)
+<label class="org-src-name">Lists, Tuples, Data.Frames and Data.Tables</label>
+<pre  class="src src-R" id="Lists and Tuples and Data Frames"><code trim>tpl = c(1,2)
 lst = list(<span style="color: #8b2252;">"firstName"</span> = <span style="color: #8b2252;">'Britt'</span>, <span style="color: #8b2252;">"lastName"</span> = <span style="color: #8b2252;">'Anderson'</span>)
 df = data.frame(<span style="color: #8b2252;">'fn'</span> = c(<span style="color: #8b2252;">"bob"</span>,<span style="color: #8b2252;">"jane"</span>,<span style="color: #8b2252;">"griffin"</span>),<span style="color: #8b2252;">"gndr"</span> = c(<span style="color: #8b2252;">'m'</span>,<span style="color: #8b2252;">'f'</span>,<span style="color: #8b2252;">'o'</span>))
 df
-</pre>
+</code></pre>
 </div>
 
 
 <p>
 You can think of <code>data.frames</code> as sort of like spread sheets. But they are much handier. For example:
 </p>
-</div>
-</div>
-<div id="outline-container-org271b56f" class="outline-4">
-<h4 id="org271b56f"><span class="section-number-4">4.5.5</span> Data Selection in R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span></h4>
-<div class="outline-text-4" id="text-4-5-5">
-<ol class="org-ol">
+</section>
+<section id="slide-orga57cbc8">
+<h4 id="orga57cbc8"><span class="section-number-4">4.5.5</span> Data Selection in R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span></h4>
+<ol>
 <li>Open up Emacs.</li>
 <li>Type <code>M-x R</code></li>
 <li>You should see an R environment appear.</li>
@@ -1570,79 +1344,80 @@ You can think of <code>data.frames</code> as sort of like spread sheets. But the
 Is <code>cars</code> a data.frame?
 </p>
 <div class="org-src-container">
-<pre class="src src-R">is.data.frame(cars)
-</pre>
+
+<pre  class="src src-R"><code trim>is.data.frame(cars)
+</code></pre>
 </div></li>
 <li><p>
 How many cars are there that can go faster than 10, but not more than 20?
 </p>
 <div class="org-src-container">
-<pre class="src src-R">length(cars$dist[cars$speed &gt; 10 &amp; cars$speed &lt; 20])
-</pre>
+
+<pre  class="src src-R"><code trim>length(cars$dist[cars$speed &gt; 10 &amp; cars$speed &lt; 20])
+</code></pre>
 </div></li>
 <li>Can you do that easily in Excel?</li>
 <li>Questions for you to explore:
-<ol class="org-ol">
+<ol>
 <li>Sort (or <code>order</code>) cars by the <code>dist</code> variable.</li>
 <li>Find the mean and standard deviation of the speed of the cars.</li>
 <li><p>
 Are there other datasets?
 </p>
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #008b8b;">library</span>(help=<span style="color: #8b2252;">"datasets"</span>)
-</pre>
+
+<pre  class="src src-R"><code trim><span style="color: #008b8b;">library</span>(help=<span style="color: #8b2252;">"datasets"</span>)
+</code></pre>
 </div></li>
 <li>Open any of the datasets that catches your eye.</li>
 <li>What are the column names?</li>
 <li>How many rows?</li>
 <li>What is the <i>comment</i> designator for R?</li>
 <li>What is the ending extension of an R script?</li>
-</ol></li>
-</ol>
-</div>
-</div>
 
-<div id="outline-container-org7a0756d" class="outline-4">
-<h4 id="org7a0756d"><span class="section-number-4">4.5.6</span> Assignment and Equality</h4>
-<div class="outline-text-4" id="text-4-5-6">
+</ol></li>
+
+</ol>
+
+</section>
+<section id="slide-org8f1f763">
+<h4 id="org8f1f763"><span class="section-number-4">4.5.6</span> Assignment and Equality</h4>
 <p>
 <code>=</code> is different from <code>==</code>
 </p>
 
 
 <div class="org-src-container">
-<pre class="src src-R">a = 2
+
+<pre  class="src src-R"><code trim>a = 2
 print(a == 3)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 
 [1] FALSE
-</pre>
 
+</pre>
 <p>
 While some things are the same, not all the language features are identical. You can use your knowledge of one language to help you make guesses in the other, but you cannot count on the notation and syntax being identical.
 </p>
-</div>
-</div>
-<div id="outline-container-org361e026" class="outline-4">
-<h4 id="org361e026"><span class="section-number-4">4.5.7</span> Loops</h4>
-<div class="outline-text-4" id="text-4-5-7">
+</section>
+<section id="slide-org545ea80">
+<h4 id="org545ea80"><span class="section-number-4">4.5.7</span> Loops</h4>
 <p>
 This is a good example of where things are slightly different
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgc3c42c3"></a>For<br />
-<div class="outline-text-5" id="text-4-5-7-1">
+<li><a id="org75df5cf"></a>For<br />
 <div class="org-src-container">
-<pre class="src src-R" id="org1303c89">ml = seq(1:10)
+
+<pre  class="src src-R" id="For Loop in R"><code trim>ml = seq(1:10)
 
 <span style="color: #a020f0;">for</span>  (m <span style="color: #a020f0;">in</span> ml) {
     print(ml)
 }
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1658,31 +1433,29 @@ This is a good example of where things are slightly different
 [1]  1  2  3  4  5  6  7  8  9 10
 [1]  1  2  3  4  5  6  7  8  9 10
 </pre>
-</div>
 <ol class="org-ol">
-<li><a id="orgd67c3fa"></a>Exercise:<br />
-<div class="outline-text-6" id="text-4-5-7-1-1">
+<li><a id="org62b8a2a"></a>Exercise:<br />
 <p>
 Change the above so that it prints on the individual number each time it goes through the loop. 
 </p>
-</div>
 </li>
 
-<li><a id="orge5f6b7a"></a>For Class Exercise<br />
-<div class="outline-text-6" id="text-4-5-7-1-2">
+<li><a id="orge3399a2"></a>For Class Exercise<br />
 <p>
 We will repeat the same exercise we did in Python, but using R this time. 
 </p>
-<ol class="org-ol">
+<ol>
 <li>Create a list of at least 8 individual characters.</li>
 <li>Make sure they are <b><b>not</b></b> in alphabetical order</li>
 <li>Print the letters one at a time.</li>
 <li>Print the letters sorted alphabetically one at a time, but <i>do not</i> overwrite your original list.</li>
 <li>Print the letters from both lists with a format command that says which position the letter is in. String formatting is less nice in R. Check out <code>paste</code> and <code>sprintf</code>. For <i>help</i> try <code>?&lt;commandname&gt;</code>.</li>
+
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-R" id="orga0ff619">myName = <span style="color: #8b2252;">"brittAnderson"</span>
+
+<pre  class="src src-R" id="Loop Exercise R"><code trim>myName = <span style="color: #8b2252;">"brittAnderson"</span>
 myList = unlist(strsplit(b,<span style="color: #8b2252;">""</span>))
 
 <span style="color: #a020f0;">for</span> (l <span style="color: #a020f0;">in</span> myList){
@@ -1701,7 +1474,7 @@ i = 1
   print(t)
   i = i+1  
   }
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1713,37 +1486,36 @@ Error in myList : object 'myList' not found
 Error in myList : object 'myList' not found
 
 Error in order(myList) : object 'myList' not found
+
 </pre>
-</div>
 </li>
 </ol>
 </li>
 
-<li><a id="org17f7ac0"></a>While<br />
+<li><a id="org9aef365"></a>While<br />
 <ol class="org-ol">
-<li><a id="org037cc02"></a>Conditionals<br />
-<div class="outline-text-6" id="text-4-5-7-2-1">
+<li><a id="org3dd9295"></a>Conditionals<br />
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #a020f0;">if</span> (2 == 3) {
+
+<pre  class="src src-R"><code trim><span style="color: #a020f0;">if</span> (2 == 3) {
     print(<span style="color: #8b2252;">"Wha.....?\n\n"</span>)
 } <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (3 == 2) {
   print(<span style="color: #8b2252;">"Now that is odd"</span>)
 } <span style="color: #a020f0;">else</span> {
   print(<span style="color: #8b2252;">"2 does not equal 3."</span>)
 }
-</pre>
-</div>
+</code></pre>
 </div>
 </li>
-<li><a id="org8481418"></a>While (again)<br />
-<div class="outline-text-6" id="text-4-5-7-2-2">
+<li><a id="orgfad2d0a"></a>While (again)<br />
 <div class="org-src-container">
-<pre class="src src-R">i = 0
+
+<pre  class="src src-R"><code trim>i = 0
 <span style="color: #a020f0;">while</span> (i&lt;=10) {
   print(unlist(strsplit(<span style="color: #8b2252;">"brittAnderson"</span>,<span style="color: #8b2252;">""</span>))[i])
   i = i+1
 }
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1760,41 +1532,40 @@ character(0)
 [1] "e"
 [1] "r"
 </pre>
-</div>
 </li>
 </ol>
 </li>
 </ol>
-</div>
 
 
-<div id="outline-container-orgd25e245" class="outline-4">
-<h4 id="orgd25e245"><span class="section-number-4">4.5.8</span> Functions</h4>
-<div class="outline-text-4" id="text-4-5-8">
+</section>
+<section id="slide-org595704e">
+<h4 id="org595704e"><span class="section-number-4">4.5.8</span> Functions</h4>
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #0000ff;">myadd</span>  <span style="color: #008b8b;">&lt;-</span> <span style="color: #a020f0;">function</span>(x,y) {
+
+<pre  class="src src-R"><code trim><span style="color: #0000ff;">myadd</span>  <span style="color: #008b8b;">&lt;-</span> <span style="color: #a020f0;">function</span>(x,y) {
   <span style="color: #a020f0;">return</span>(x+y)
   }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-R">myadd(2,3)
-</pre>
+
+<pre  class="src src-R"><code trim>myadd(2,3)
+</code></pre>
 </div>
 
 <pre class="example">
 [1] 5
+
 </pre>
-</div>
 
 <ol class="org-ol">
-<li><a id="orgbd85148"></a>Class Exercise with Functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
-<div class="outline-text-5" id="text-4-5-8-1">
+<li><a id="orgdcfefa0"></a>Class Exercise with Functions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="homework">homework</span></span><br />
 <p>
 You will be required to turn this in, but you can get started now. 
 </p>
-<ol class="org-ol">
+<ol>
 <li>Look up how to get user input from python on the command line.</li>
 <li>Write a script that I will run on the command line with R.</li>
 <li>Your script should ask me to enter a word.</li>
@@ -1802,25 +1573,23 @@ You will be required to turn this in, but you can get started now.
 <li>Print out the sorted version one character at a time.</li>
 <li>Ask me if I want to do it again (y/n). If 'y', repeat, and continue repeating until I answer 'n'.</li>
 <li>If you want to try and rewrite your hangman program from earlier in R, that is quite acceptable too. The goal is to get your trying to write something in R.</li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-orgedfce47" class="outline-4">
-<h4 id="orgedfce47"><span class="section-number-4">4.5.9</span> Libraries for R:classdiscussion:</h4>
-<div class="outline-text-4" id="text-4-5-9">
+</section>
+<section id="slide-orgbc61388">
+<h4 id="orgbc61388"><span class="section-number-4">4.5.9</span> Libraries for R:classdiscussion:</h4>
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 3: </span>Package Installation Commands in R. Note the use of quotes differs.</label><pre class="src src-R" id="org1691c80">install.packages(<span style="color: #8b2252;">"data.table"</span>)
+<label class="org-src-name">Package Installation Commands in R. Note the use of quotes differs.</label>
+<pre  class="src src-R" id="Installing Packages in R"><code trim>install.packages(<span style="color: #8b2252;">"data.table"</span>)
 install.packages(<span style="color: #8b2252;">"ggplot2"</span>)
 <span style="color: #008b8b;">library</span>(data.table)
 <span style="color: #008b8b;">library</span>(ggplot2)
-</pre>
-</div>
+</code></pre>
 </div>
 <ol class="org-ol">
-<li><a id="orgeefa4f9"></a>What are some popular libraries?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span>&#xa0;<span class="homework">homework</span></span><br />
-<div class="outline-text-5" id="text-4-5-9-1">
+<li><a id="orgf9910d4"></a>What are some popular libraries?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span>&#xa0;<span class="homework">homework</span></span><br />
 <p>
 <a href="https://pythontips.com/2013/07/30/20-python-libraries-you-cant-live-without/">Here</a> are 20 recommended ones.
 </p>
@@ -1828,12 +1597,13 @@ install.packages(<span style="color: #8b2252;">"ggplot2"</span>)
 <p>
 Of particular note for us are:
 </p>
-<ol class="org-ol">
+<ol>
 <li>knitr</li>
 <li>ggplot2</li>
 <li>data.table</li>
 <li>magrittr</li>
 <li>devtools/githubinstall</li>
+
 </ol>
 
 <p>
@@ -1843,34 +1613,28 @@ Divide class into small groups. Assign a library. Have them present to us what i
 <p>
 Homework: Submit a short .R script to the class github repo that demonstrates the importation of your library and some basic use. 
 </p>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-orgb31c651" class="outline-4">
-<h4 id="orgb31c651"><span class="section-number-4">4.5.10</span> Programs</h4>
-<div class="outline-text-4" id="text-4-5-10">
+</section>
+<section id="slide-orgee93fad">
+<h4 id="orgee93fad"><span class="section-number-4">4.5.10</span> Programs</h4>
 <p>
 Nothing else really, but the more prolonged and complicated concatenation of the above. 
 </p>
-</div>
-</div>
-<div id="outline-container-org3e442da" class="outline-4">
-<h4 id="org3e442da"><span class="section-number-4">4.5.11</span> Debugging and Basic Working Methods</h4>
-<div class="outline-text-4" id="text-4-5-11">
+</section>
+<section id="slide-orgf514931">
+<h4 id="orgf514931"><span class="section-number-4">4.5.11</span> Debugging and Basic Working Methods</h4>
 <p>
 The most basic is just to <code>print</code> statements into your code so that you can see what happening and whether your variables are actually what you think they should be. 
 </p>
-</div>
-</div>
-<div id="outline-container-org23df6a6" class="outline-4">
-<h4 id="org23df6a6"><span class="section-number-4">4.5.12</span> IDEs</h4>
+</section>
+<section id="slide-org992d14f">
+<h4 id="org992d14f"><span class="section-number-4">4.5.12</span> IDEs</h4>
 <div class="outline-text-4" id="text-4-5-12">
 </div>
 <ol class="org-ol">
-<li><a id="org0902105"></a>Vanilla Emacs<br />
-<div class="outline-text-5" id="text-4-5-12-1">
-<ol class="org-ol">
+<li><a id="orgf4c267b"></a>Vanilla Emacs<br />
+<ol>
 <li>Open up a blank file with a name that ends in .R</li>
 <li>Type in some lines (e.g. a = 2, b = 3, print(a+b))</li>
 <li>Type C-c C-c on the first line.</li>
@@ -1878,43 +1642,43 @@ The most basic is just to <code>print</code> statements into your code so that y
 <li>Fix it.</li>
 <li>Keep C-c C-c'ing on each line and look at what is happening in your console.</li>
 <li>An easier way to get and maintain your emacs package is "use-package". See some instructions <a href="https://elpy.readthedocs.io/en/latest/introduction.html#overview">here</a>.</li>
+
 </ol>
-</div>
 </li>
-<li><a id="org517d4d7"></a>Babel Mode<br />
-<div class="outline-text-5" id="text-4-5-12-2">
-<ol class="org-ol">
+<li><a id="orgf286bc3"></a>Babel Mode<br />
+<ol>
 <li>Open a file with the name &lt;something&gt;.org</li>
 <li>Type in some text</li>
 <li><p>
 Open a source block 
 </p>
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #b22222;">#+begin_src R</span>
+
+<pre  class="src src-org"><code trim><span style="color: #b22222;">#+begin_src R</span>
 <span style="color: #7f7f7f;">a = 2</span>
 <span style="color: #7f7f7f;">b = 3</span>
 <span style="color: #7f7f7f;">print(a+b)</span>
 <span style="color: #b22222;">#+end_src</span>
-</pre>
+</code></pre>
 </div></li>
 <li>Type <code>C-c C-e h h</code>. That is four different key presses.</li>
 <li>You just generated a web page. View it in your browser.</li>
 <li>Now combine it with python by adding another source block below that uses the python language.</li>
 <li>For help google emacs orgmode babel</li>
+
 </ol>
-</div>
 </li>
-<li><a id="org53d1865"></a>Install RStudio&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span><br />
-<div class="outline-text-5" id="text-4-5-12-3">
+<li><a id="orgfa435e9"></a>Install RStudio&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classactivity">classactivity</span></span><br />
 <p>
 Basic Steps:
 </p>
-<ol class="org-ol">
+<ol>
 <li>Update your repository</li>
 <li>Install R base</li>
 <li>Use wget to install the <b>.deb</b> package for our version of Ubuntu from the RStudio downloads page.</li>
 <li>run <code>sudo dpkg -i &lt;PACKAGENAME&gt;</code></li>
 <li>try launching <code>rstudio</code></li>
+
 </ol>
 
 <p>
@@ -1928,47 +1692,48 @@ One reason is the fact that it is becoming quite common so it mostly works out o
 <p>
 A downside is that out-of-the-box performance comes with a loss of flexibility and adapatability on your part and a bias to the authors' choices of preferred packages. You also return to the "gui" click an icon usage. These are two habits you are trying to break.
 </p>
-</div>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-orgbcb89d9" class="outline-3">
-<h3 id="orgbcb89d9"><span class="section-number-3">4.6</span> Session 6 Data Handling</h3>
+</section>
+<section id="slide-orgae63033">
+<h3 id="orgae63033"><span class="section-number-3">4.6</span> Session 6 Data Handling</h3>
 <div class="outline-text-3" id="text-4-6">
 </div>
-<div id="outline-container-org9ba9b1d" class="outline-4">
-<h4 id="org9ba9b1d"><span class="section-number-4">4.6.1</span> Data handling in R</h4>
+</section>
+<section id="slide-org8d3c4a8">
+<h4 id="org8d3c4a8"><span class="section-number-4">4.6.1</span> Data handling in R</h4>
 <div class="outline-text-4" id="text-4-6-1">
 </div>
 <ol class="org-ol">
-<li><a id="org33523c8"></a>Getting your data into R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span><br />
-<div class="outline-text-5" id="text-4-6-1-1">
-<ol class="org-ol">
+<li><a id="orgc6f097e"></a>Getting your data into R&#xa0;&#xa0;&#xa0;<span class="tag"><span class="classdiscussion">classdiscussion</span></span><br />
+<ol>
 <li>First get some data.
 If you do not have your own data from a prior project you can get some from here (what follows use the HSQ dataset): 
 <a href="https://openpsychometrics.org/_rawdata/">https://openpsychometrics.org/_rawdata/</a>
-<ol class="org-ol">
+<ol>
 <li>You have just downloaded  a zip file. Now what?</li>
 <li>Unzip it.
-<ul class="org-ul">
+<ul>
 <li>First option (command line): navigate to your download directory and then use command <code>unzip</code></li>
 <li>Second option (emacs): navigate to your download directory (<code>C-x d</code>) and then put cursor on file and type <code>Z</code>.</li>
+
 </ul></li>
+
 </ol></li>
 <li>What is <b>csv</b>? How does it differ from Excel (xlsx)? Which is better? What about SPSS, SAS &#x2026;</li>
 <li><p>
 R uses a <code>read</code> command with many variants. There are extra libraries for other formats. Here we focus on csv. I downloaded the <i>HSQ</i> dataset. 
 </p>
 <div class="org-src-container">
-<pre class="src src-R">d <span style="color: #008b8b;">&lt;-</span> read.csv(<span style="color: #8b2252;">"./HSQ/HSQ/data.csv"</span>)
-</pre>
+
+<pre  class="src src-R"><code trim>d <span style="color: #008b8b;">&lt;-</span> read.csv(<span style="color: #8b2252;">"./HSQ/HSQ/data.csv"</span>)
+</code></pre>
 </div></li>
 <li>Reading is different from <code>load</code>. How? Check the help.</li>
 <li>Note the assignment to a variable for the reading?</li>
 <li>What are the optional arguments to <code>read.csv</code> and why would you use them.</li>
 <li>Explore the data?
-<ol class="org-ol">
+<ol>
 <li>Use <code>ls()</code> to see the list of names of variables in your "workspace."</li>
 <li>Use <code>names(d)</code> (the <i>d</i> is the name of your variable of interest) to see the column names?</li>
 <li>How would you find out the number of rows?</li>
@@ -1978,8 +1743,9 @@ R uses a <code>read</code> command with many variants. There are extra libraries
 How many participants of each gender? I am using data.frame format here.
 </p>
 <div class="org-src-container">
-<pre class="src src-R">with(d,tapply(age,gender,length))
-</pre>
+
+<pre  class="src src-R"><code trim>with(d,tapply(age,gender,length))
+</code></pre>
 </div>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2011,8 +1777,9 @@ How many participants of each gender? I am using data.frame format here.
 Always inspect your data
 </p>
 <div class="org-src-container">
-<pre class="src src-R">unique(d$gender)
-</pre>
+
+<pre  class="src src-R"><code trim>unique(d$gender)
+</code></pre>
 </div>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -2044,125 +1811,116 @@ Always inspect your data
 Limit your data to only self-declared men and women. Make a new data frame with just these rows. It should be 1058.
 </p>
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 4: </span>Selecting the Men and Women. Explain this Line. What does <code>ls()</code> show now?</label><pre class="src src-R" id="org885b605">dmf <span style="color: #008b8b;">&lt;-</span> d[d$gender <span style="color: #008b8b;">%in%</span> c(1,2),]
+<label class="org-src-name">Selecting the Men and Women. Explain this Line. What does <code>ls()</code> show now?</label>
+<pre  class="src src-R" id="Selection by Row R"><code trim>dmf <span style="color: #008b8b;">&lt;-</span> d[d$gender <span style="color: #008b8b;">%in%</span> c(1,2),]
 print(nrow(dmf))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 1058
+
 </pre></li>
+
 </ol></li>
+
 </ol>
-</div>
 </li>
-<li><a id="org918070a"></a>Class Exercise to Work with the Data<br />
-<div class="outline-text-5" id="text-4-6-1-2">
+<li><a id="org0950751"></a>Class Exercise to Work with the Data<br />
 <p>
 Come up with some exercises for class exploration
 </p>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-org85d962f" class="outline-4">
-<h4 id="org85d962f"><span class="section-number-4">4.6.2</span> Data handling in Python</h4>
+</section>
+<section id="slide-org1c2361b">
+<h4 id="org1c2361b"><span class="section-number-4">4.6.2</span> Data handling in Python</h4>
 <div class="outline-text-4" id="text-4-6-2">
 </div>
 <ol class="org-ol">
-<li><a id="org8f9a1e0"></a>Pandas<br />
-<div class="outline-text-5" id="text-4-6-2-1">
+<li><a id="orgd400c12"></a>Pandas<br />
 <p>
 This is becoming the defacto R equivalent for Python. There are definitely libraries for reading and writing plain csv files, but they are becoming used less and less. 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgfde38c7"></a>Getting Your Data Into Python<br />
-<div class="outline-text-6" id="text-4-6-2-1-1">
+<li><a id="orgd547754"></a>Getting Your Data Into Python<br />
 <p>
 You have to import pandas to use it. 
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
 <span style="color: #a0522d;">dpd</span> = pd.read_csv(<span style="color: #8b2252;">"./HSQ/HSQ/data.csv"</span>)
 dpd.columns.values
-</pre>
-</div>
+</code></pre>
 </div>
 </li>
-<li><a id="org5236206"></a>Repeat the same inquiries as above, but with Pandas.<br />
-<div class="outline-text-6" id="text-4-6-2-1-2">
+<li><a id="org4b42160"></a>Repeat the same inquiries as above, but with Pandas.<br />
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #483d8b;">len</span>(dpd[<span style="color: #8b2252;">'Q1'</span>])
-</pre>
+
+<pre  class="src src-python"><code trim><span style="color: #483d8b;">len</span>(dpd[<span style="color: #8b2252;">'Q1'</span>])
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a0522d;">dpdmg</span> = dpd.copy()
+
+<pre  class="src src-python"><code trim><span style="color: #a0522d;">dpdmg</span> = dpd.copy()
 <span style="color: #a0522d;">dpdmg</span> = dpdmg[dpdmg[<span style="color: #8b2252;">'gender'</span>].isin([1,2])]
 <span style="color: #483d8b;">len</span>(dpdmg[<span style="color: #8b2252;">'Q1'</span>])
-</pre>
+</code></pre>
 </div>
 
 
 <p>
 What happens if you just select with <code>in</code>? You keep the same number of rows, because you replace the ineligible data with NaNs (not a number). 
 </p>
-</div>
 </li>
 
 
-<li><a id="org33575c2"></a>Functional Styles versus Object Orientation<br />
-<div class="outline-text-6" id="text-4-6-2-1-3">
+<li><a id="orgfebdcdb"></a>Functional Styles versus Object Orientation<br />
 <p>
 Python is an object oriented language. Pandas creates a data.frame object (intended to mimic R), but it is not the same thing, and while most of the commands are achievable in either, they are not the same. The <b>dot</b> shows you we are accessing either an attribute or a method of an object. 
 </p>
-</div>
 </li>
 </ol>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-orge236173" class="outline-3">
-<h3 id="orge236173"><span class="section-number-3">4.7</span> Session 7 Plotting in Python and R</h3>
+</section>
+<section id="slide-org741bf04">
+<h3 id="org741bf04"><span class="section-number-3">4.7</span> Session 7 Plotting in Python and R</h3>
 <div class="outline-text-3" id="text-4-7">
 </div>
-<div id="outline-container-orgb393d02" class="outline-4">
-<h4 id="orgb393d02"><span class="section-number-4">4.7.1</span> General</h4>
-<div class="outline-text-4" id="text-4-7-1">
+</section>
+<section id="slide-orge365c6d">
+<h4 id="orge365c6d"><span class="section-number-4">4.7.1</span> General</h4>
 <p>
 Comment. While it is possible to do almost anything that you can do in one language in the other, some sorts of plots may be easier to produce in one than the other. In general, you are better using the language you know best, even if the library that you need is a bit complex. On the other hand, don't be a mono-programmer. If there is a great library that does exactly what you want in a new language, or one you know less well, consider learning enough to use it. Have a "get the job done" attitude rather than focusing on mastery. Too much changes too fast in this world for you to get too settled on any one language or approach. 
 </p>
-</div>
-</div>
-<div id="outline-container-org01e239c" class="outline-4">
-<h4 id="org01e239c"><span class="section-number-4">4.7.2</span> R</h4>
-<div class="outline-text-4" id="text-4-7-2">
+</section>
+<section id="slide-org56ae925">
+<h4 id="org56ae925"><span class="section-number-4">4.7.2</span> R</h4>
 <p>
 Base plot and ggplot are the two most common R libraries for plotting with ggplot seeming to have much of the current momentum. They have two different models behind them, one may fit your thinking better than the other. Use the one that seems to make most sense to you. But for today you will have to use them all.
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org625ce25"></a>Create some variables that you will use.<br />
-<div class="outline-text-5" id="text-4-7-2-1">
+<li><a id="orgbd21ddb"></a>Create some variables that you will use.<br />
 <div class="org-src-container">
-<pre class="src src-R">x <span style="color: #008b8b;">&lt;-</span> 1:10
+
+<pre  class="src src-R"><code trim>x <span style="color: #008b8b;">&lt;-</span> 1:10
 y1 <span style="color: #008b8b;">&lt;-</span> x^2
 y2  <span style="color: #008b8b;">&lt;-</span> 2*y1
 y3  <span style="color: #008b8b;">&lt;-</span> rnorm(10)
-</pre>
-</div>
+</code></pre>
 </div>
 </li>
-<li><a id="org3aa0100"></a>Base Plot<br />
-<div class="outline-text-5" id="text-4-7-2-2">
+<li><a id="org6c80aef"></a>Base Plot<br />
 <p>
 The two main commands you will use are <code>plot</code> and <code>lines</code>. Be careful. There is a command <code>line</code> (no 's'). That is not what you will want here.
 </p>
 <div class="org-src-container">
-<pre class="src src-R">plot(x,y1)
-</pre>
+
+<pre  class="src src-R"><code trim>plot(x,y1)
+</code></pre>
 </div>
 
 
@@ -2170,17 +1928,16 @@ The two main commands you will use are <code>plot</code> and <code>lines</code>.
 <p><img src="baseplot1.png" alt="baseplot1.png" />
 </p>
 </div>
-</div>
 <ol class="org-ol">
-<li><a id="org75e6f19"></a>Changing the look of base plot<br />
-<div class="outline-text-6" id="text-4-7-2-2-1">
+<li><a id="orgc4e6dbb"></a>Changing the look of base plot<br />
 <p>
 You have multiple <i>hidden</i> arguments you can use to change the look of the plot such as the symbols, whether it plots lines or dots, the color, the font size. Always remember to try the help command. Here is just one example.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">plot(x,y1,type = <span style="color: #8b2252;">'b'</span>, frame = F, pch = 19, col = <span style="color: #8b2252;">"red"</span> , ylabel = <span style="color: #8b2252;">"y"</span>, lty = 1, lwd = 3)
-</pre>
+
+<pre  class="src src-R"><code trim>plot(x,y1,type = <span style="color: #8b2252;">'b'</span>, frame = F, pch = 19, col = <span style="color: #8b2252;">"red"</span> , ylabel = <span style="color: #8b2252;">"y"</span>, lty = 1, lwd = 3)
+</code></pre>
 </div>
 
 <p>
@@ -2188,26 +1945,25 @@ How would you include this plot in another document?
 </p>
 
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 5: </span>Our base plot with additional data series added.</label><pre class="src src-R" id="org7478779">plot(x,y1,type = <span style="color: #8b2252;">'b'</span>, frame = F, pch = 19, col = <span style="color: #8b2252;">"red"</span> , ylab = <span style="color: #8b2252;">"y"</span>, lty = 1, lwd = 3)
+<label class="org-src-name">Our base plot with additional data series added.</label>
+<pre  class="src src-R" id="addlines"><code trim>plot(x,y1,type = <span style="color: #8b2252;">'b'</span>, frame = F, pch = 19, col = <span style="color: #8b2252;">"red"</span> , ylab = <span style="color: #8b2252;">"y"</span>, lty = 1, lwd = 3)
 lines(x,y2, pch = 18, col = <span style="color: #8b2252;">"blue"</span>, type = <span style="color: #8b2252;">"b"</span> , lty = 2, lwd = 1)
 lines(x,y3, pch = 17, col = <span style="color: #8b2252;">"green"</span> , type = <span style="color: #8b2252;">"l"</span>, lty=3, lwd = 4)
 legend(<span style="color: #8b2252;">"topleft"</span>, legend = c(<span style="color: #8b2252;">"Line 1"</span>, <span style="color: #8b2252;">"Line 2"</span>, <span style="color: #8b2252;">"Line 3"</span>), col = c(<span style="color: #8b2252;">"red"</span>,<span style="color: #8b2252;">"blue"</span>,<span style="color: #8b2252;">"green"</span>),
        lty = 1:3, cex = 0.8)
-</pre>
+</code></pre>
 </div>
 
 <p>
 <img src="baseplot3.png" alt="baseplot3.png" />
 Who wants to try and recreate this in Excel or SPSS?
 </p>
-</div>
 </li>
 </ol>
 </li>
 
 
-<li><a id="orgaf0eedb"></a>Ggplot<br />
-<div class="outline-text-5" id="text-4-7-2-3">
+<li><a id="orgbf0a012"></a>Ggplot<br />
 <p>
 <code>ggplot</code> uses a model where you build things up  bit by bit all in one line, and you can keep adding to the same object. For instance. 
 </p>
@@ -2216,11 +1972,12 @@ Who wants to try and recreate this in Excel or SPSS?
 Note that people tend to say "ggplot", but they always mean =ggplot2". Note the number "2". 
 </p>
 <div class="org-src-container">
-<pre class="src src-R">       <span style="color: #008b8b;">library</span>(ggplot2)
+
+<pre  class="src src-R"><code trim>       <span style="color: #008b8b;">library</span>(ggplot2)
 p  <span style="color: #008b8b;">&lt;-</span> ggplot(data = data.frame(<span style="color: #8b2252;">"x"</span> = x, <span style="color: #8b2252;">"y1"</span> = y1, <span style="color: #8b2252;">"y2"</span> = y2, <span style="color: #8b2252;">"y3"</span> = y3), aes(x = x, y = y1, col= <span style="color: #8b2252;">'r'</span>))
 p <span style="color: #008b8b;">&lt;-</span> p + geom_point() + geom_line() + theme(legend.position = c(0.2,0.65)) + geom_line(aes(x=x,y=y2, col = <span style="color: #8b2252;">"blue"</span>)) + geom_line(aes(y=y3,col = <span style="color: #8b2252;">"green"</span>))
 ggsave(<span style="color: #8b2252;">"ggplot1.png"</span>, width = 8, height = 5, units = <span style="color: #8b2252;">"cm"</span>) 
-</pre>
+</code></pre>
 </div>
 
 
@@ -2228,30 +1985,25 @@ ggsave(<span style="color: #8b2252;">"ggplot1.png"</span>, width = 8, height = 5
 <p><img src="ggplot1.png" alt="ggplot1.png" />
 </p>
 </div>
-</div>
 </li>
 
-<li><a id="org608c0fd"></a>Scatter Plots and Box Plots<br />
-<div class="outline-text-5" id="text-4-7-2-4">
-<ol class="org-ol">
+<li><a id="org256ab1b"></a>Scatter Plots and Box Plots<br />
+<ol>
 <li>Using the R data set <code>mtcars</code> create in both base plot and ggplot a scatterplot of <b>mpg</b> and <b>wt</b>. What would you expect this to show even before you plot it. Always good to know what you are looking for as a clue to test if something went wrong.</li>
 <li>Using the R data set <code>ToothGrowth</code> generate boxplots for <code>len</code> and <code>dose</code>. If you are feeling creative overlay the data points on top of the box plot.</li>
+
 </ol>
-</div>
 </li>
 
-<li><a id="org6003aad"></a>Lattice<br />
-<div class="outline-text-5" id="text-4-7-2-5">
+<li><a id="orgb4c889b"></a>Lattice<br />
 <p>
 <a href="https://stat.ethz.ch/R-manual/R-devel/library/lattice/html/Lattice.html">Lattice Plot Overview</a>
 </p>
-</div>
 </li>
 </ol>
-</div>
-<div id="outline-container-orga9a70b8" class="outline-4">
-<h4 id="orga9a70b8"><span class="section-number-4">4.7.3</span> Interaction Plots</h4>
-<div class="outline-text-4" id="text-4-7-3">
+</section>
+<section id="slide-orga1c70e3">
+<h4 id="orga1c70e3"><span class="section-number-4">4.7.3</span> Interaction Plots</h4>
 <p>
 What is an interaction plot and when would you like to use one?
 </p>
@@ -2259,10 +2011,8 @@ What is an interaction plot and when would you like to use one?
 <p>
 I am including this specifically because it was mentioned that is something that is hard to produce in SPSS, and the stats courses thought it could be useful. 
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="org31e7f48"></a>Getting the data<br />
-<div class="outline-text-5" id="text-4-7-3-1">
+<li><a id="org893a6de"></a>Getting the data<br />
 <p>
 Download the data from <a href="http://personality-project.org/r/datasets/heating.txt">http://personality-project.org/r/datasets/heating.txt</a>
 </p>
@@ -2270,16 +2020,15 @@ Download the data from <a href="http://personality-project.org/r/datasets/heatin
 <p>
 Okay. It is a text file. Read that into pandas in Python.
 </p>
-</div>
 </li>
-<li><a id="org39d5ece"></a>Pandas Read in Text<br />
-<div class="outline-text-5" id="text-4-7-3-2">
+<li><a id="orgc64c0bf"></a>Pandas Read in Text<br />
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">import</span> pandas <span style="color: #a020f0;">as</span> pd
 <span style="color: #a0522d;">url</span> = <span style="color: #8b2252;">"http://personality-project.org/r/datasets/heating.txt"</span>
 <span style="color: #a0522d;">d</span> = pd.read_csv(url, sep = <span style="color: #8b2252;">"\t"</span>)
 d.columns
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -2295,12 +2044,13 @@ We will also use some additional python modules to help us make this easier, spe
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> statsmodels.graphics.factorplots <span style="color: #a020f0;">import</span> interaction_plot
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">from</span> statsmodels.graphics.factorplots <span style="color: #a020f0;">import</span> interaction_plot
 <span style="color: #a020f0;">from</span> matplotlib <span style="color: #a020f0;">import</span> pyplot <span style="color: #a020f0;">as</span> plt
 <span style="color: #a0522d;">fig</span> = interaction_plot(d[<span style="color: #8b2252;">'degreedays'</span>],d[<span style="color: #8b2252;">'Location'</span>],d[<span style="color: #8b2252;">'therms'</span>])
 plt.savefig(<span style="color: #8b2252;">"py-inter-plt.png"</span>)
 <span style="color: #8b2252;">"py-inter-plt.png"</span>
-</pre>
+</code></pre>
 </div>
 
 
@@ -2314,7 +2064,8 @@ Of course this gives us a "connect" the dots sort of look to our data, because t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #a020f0;">from</span> statsmodels.formula.api <span style="color: #a020f0;">import</span> ols
+
+<pre  class="src src-python"><code trim><span style="color: #a020f0;">from</span> statsmodels.formula.api <span style="color: #a020f0;">import</span> ols
 <span style="color: #a0522d;">ols_d</span> = ols(formula = <span style="color: #8b2252;">"therms ~ degreedays * Location"</span>,data = d)
 <span style="color: #a0522d;">myfits</span> = ols_d.fit()
 plt.clf()
@@ -2325,7 +2076,7 @@ interaction_plot(d[<span style="color: #8b2252;">'degreedays'</span>],d[<span st
 interaction_plot(d[<span style="color: #8b2252;">'degreedays'</span>],d[<span style="color: #8b2252;">'Location'</span>],d[<span style="color: #8b2252;">'therms'</span>],plottype=<span style="color: #8b2252;">'scatter'</span>,ax = a)
 plt.savefig(<span style="color: #8b2252;">"py-inter-fit-plt.png"</span>)
 <span style="color: #8b2252;">"py-inter-fit-plt.png"</span>
-</pre>
+</code></pre>
 </div>
 
 
@@ -2333,18 +2084,16 @@ plt.savefig(<span style="color: #8b2252;">"py-inter-fit-plt.png"</span>)
 <p><img src="py-inter-fit-plt.png" alt="py-inter-fit-plt.png" />
 </p>
 </div>
-</div>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-org4bab4e7" class="outline-3">
-<h3 id="org4bab4e7"><span class="section-number-3">4.8</span> Session 8 Programming Experiments</h3>
+</section>
+<section id="slide-org953d32a">
+<h3 id="org953d32a"><span class="section-number-3">4.8</span> Session 8 Programming Experiments</h3>
 <div class="outline-text-3" id="text-4-8">
 </div>
-<div id="outline-container-org57fa237" class="outline-4">
-<h4 id="org57fa237"><span class="section-number-4">4.8.1</span> Experimental Programming in Python</h4>
-<div class="outline-text-4" id="text-4-8-1">
+</section>
+<section id="slide-orgcf3654f">
+<h4 id="orgcf3654f"><span class="section-number-4">4.8.1</span> Experimental Programming in Python</h4>
 <p>
 The components of a typical experimental program in psychology involve some combination of showing something on a computer and getting a response from the participant. This typically means you will need some way of talking to the graphics part of the computer (to place text or images on the monitor), and some way of listening to the computer to record keyboard, button box, or mouse presses. <i>Listening</i> for eye movements or EEG is an extension of this basic approach. 
 </p>
@@ -2352,27 +2101,46 @@ The components of a typical experimental program in psychology involve some comb
 <p>
 It is possible (and sometimes more direct) to use python library that more directly address these goals, such as <a href="http://pyopengl.sourceforge.net/">pyopengl</a> for graphics or <a href="https://www.pygame.org/news">pygame</a> for getting joystick input, but in general never reinvent the wheel if you don't have to. As computer are common tools of psychological research there have been some excellent libraries that serve as one-stop shops for our needs. The one we will use in this course is <a href="https://www.psychopy.org/">psychopy</a>.
 </p>
-</div>
 <ol class="org-ol">
-<li><a id="orgdf4b265"></a>Psychopy Library<br />
-<div class="outline-text-5" id="text-4-8-1-1">
-<ol class="org-ol">
+<li><a id="org02c078d"></a>Psychopy Library<br />
+<ol>
 <li>For future reference you should note that psychopy is building in increasing support for performing online studies. These extension often rely on another language, javascript. We will <b>not</b> be using these extension here, but if you master the basics you will be able to extend your use on your onw.</li>
 <li>Resources for Psychopy.
-<ol class="org-ol">
+<ol>
 <li>The authors of the Psychopy library have written an entire <a href="https://us.sagepub.com/en-us/nam/building-experiments-in-psychopy/book253480#contents">textbook</a> on using python for psychology experiments that includes the online extensions. That is a good resource to pursue things after this course.</li>
 <li>On the psychopy website is an <a href="https://www.psychopy.org/coder/coder.html">introduction</a> to using the coder component of psychopy.</li>
 <li>Searching online with <code>psychopy tutorial</code> will get you a variety of hits. Note that you want to emphasize the <code>coder</code> version. Maybe the <code>builder</code> will meet your needs, but better to start with the <code>coder</code> version and use the <code>builder</code> for efficiency. In many cases it will be harder to build a complex experiment in the <code>builder</code> than by directly using the <code>coder</code> version.</li>
+
 </ol></li>
+
 </ol>
-</div>
 <ol class="org-ol">
-<li><a id="org815db3f"></a>Psychopy Exercise<br />
-<div class="outline-text-6" id="text-4-8-1-1-1">
+<li><a id="org56f8173"></a>Psychopy Demos<br />
+<p>
+Purpose: Demonstrate that you have psychopy installed and functioning
+</p>
+
+<p>
+Navigate to where installed. Look in (via terminal) <code>cd ~/.lib/python3.6/site-packages/psychopy/demos/coder/stimuli/</code>
+</p>
+
+<p>
+<code>python3 face_jpg.py</code>
+</p>
+
+<p>
+Run a few other demos.
+</p>
+
+<p>
+Save one of the demos with a slightly altered name (so you don't overwrite the original). Open it up in your editor and change one tiny thing. Maybe the color of something or the size. Save it. Close. And then run your altered demo. 
+</p>
+</li>
+<li><a id="org0bf31b3"></a>Psychopy Exercise<br />
 <p>
 This demo still needs testing
 </p>
-<ol class="org-ol">
+<ol>
 <li>Open up a terminal.</li>
 <li>Begin a python session</li>
 <li><code>from psychopy import visual,core</code></li>
@@ -2389,15 +2157,14 @@ This demo still needs testing
 <code>mywin.flip()</code></li>
 <li>Clean up and shut down in an orderly way
 <code>core.quit()</code></li>
+
 </ol>
-</div>
 </li>
-<li><a id="org0add8c5"></a>Extensions<br />
-<div class="outline-text-6" id="text-4-8-1-1-2">
+<li><a id="orgef81dc9"></a>Extensions<br />
 <p>
 To work on these examples you will want to consult the <a href="https://www.psychopy.org/api/api.html">psychopy API</a> to see what functions do what, and what the arguments are that you need to supply. 
 </p>
-<ol class="org-ol">
+<ol>
 <li>Change the color of the square.</li>
 <li>Move the Square.</li>
 <li>Add some text</li>
@@ -2405,88 +2172,344 @@ To work on these examples you will want to consult the <a href="https://www.psyc
 <li>Run any of the demo programs you can find in the <code>.../psychopy/demo/coder/stimuli/</code> directory.</li>
 <li>Change something in the demo you are running and see what the effect is.
 Note you may want to save the original file with a new name and hack on the one with a new name. That way it will be easier to go back to the original if you break something.</li>
+
 </ol>
-</div>
+</li>
+<li><a id="org0462681"></a>Simple Tutorials<br />
+<p>
+<a href="https://www.psychopy.org/coder/tutorial1.html">Here</a> is the first Psychopy tutorial 
+</p>
+
+<p>
+See if you can get this to work. 
+</p>
+
+<p>
+Another idea: <a href="https://www.psychopy.org/coder/tutorial2.html">A formula for JND</a>
+</p>
 </li>
 </ol>
 </li>
-<li><a id="org9e82d6d"></a>Homework (can start in class)<br />
-<div class="outline-text-5" id="text-4-8-1-2">
-<ol class="org-ol">
+
+<li><a id="org76472f9"></a>Homework (can start in class)<br />
+<ol>
 <li>Provide me with a name of the basic variety or example of the experiment you intend to code (with at least one reference using that task).</li>
 <li>Provide a written (not code) outline of what you will need to do to implement the task.</li>
 <li>Provide links to any existing versions of the task that you hope to be able to adapt for your usage.</li>
+<li><i>Be very basic.</i> Simple recall. Simple reaction time. Stroop. Picture versus word memory. The goal is to get something minimal working to prove "proof-of-concept"; not to actually have a reliable experiment coded.</li>
+
 </ol>
-</div>
 </li>
 </ol>
-</div>
-</div>
-<div id="outline-container-orgfe17430" class="outline-3">
-<h3 id="orgfe17430"><span class="section-number-3">4.9</span> Session 9 Report Writing</h3>
+</section>
+<section id="slide-org410bfa4">
+<h3 id="org410bfa4"><span class="section-number-3">4.9</span> Session 9 Report Writing</h3>
 <div class="outline-text-3" id="text-4-9">
+</div>
+</section>
+<section id="slide-org32a5f6b">
+<h4 id="org32a5f6b"><span class="section-number-4">4.9.1</span> Writing a simple report</h4>
+<ol>
+<li>We will use emacs. Open it up.</li>
+<li>We will use R.
+In the future, you might prefer to use the <code>knitr</code> package. But I am sticking with this <i>org-babel</i> so that I have one less new thing to introduce. However, it is an amazing <a href="https://yihui.name/knitr/">package</a>, that you may want to learn more about.</li>
+<li>Testing
+<ul>
+<li>If you have emacs correctly installed and a working latex installation than you should be able to open <code>testLatex.org</code> in emacs and type <code>C-c C-e l p</code> and you will see a new pdf file in your directory that you can open up (also in emacs).</li>
+<li>If you have R and ESS installed properly you can open up <code>testRBabel.org</code> in emacs and type <code>C-c C-e l p</code> and you will see a new pdf appear that has the code and graphic that you just processed.</li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-orgfe458d1">
+<h4 id="orgfe458d1"><span class="section-number-4">4.9.2</span> Mixing Code and Text for reproducibility</h4>
+<div class="outline-text-4" id="text-4-9-2">
+</div>
+<ol class="org-ol">
+<li><a id="org53d15e0"></a>Intro<br />
 <p>
-IAMHERE
+Org-mode in emacs is a version of a markdown language (other markdowns are github flavored markdown and R markdown). They all have the same basic goal of letting you type simple text and have something else behind the scenes necessary for producing a webpage or a pdf file. In addition, org-mode has a component <i>bable</i> component that can also read and execute code putting pretty, formatted output into your final document. This week we will experiment with this capability.
 </p>
+</li>
+<li><a id="orgd089d26"></a>Getting started with Orgmode<br />
+<ol>
+<li>Open emacs. Do you know what directory you are in? Try <code>M-x pwd</code> and look at the minibuffer. What does the "M" stand for in that command. What key does it mean?</li>
+<li>Open a file and give it a name. Make the extension <code>.org</code>.</li>
+<li>Type an asterisk (*) followed by a space and a name for your first header.
+Ask me about shortcut keys if you want to work faster.</li>
+<li>Save</li>
+<li><code>C-c C-e t A</code> You should see the output in a new buffer. Do the <code>C-c C-e</code> part again and look at all the different output options available.</li>
+
+</ol>
+</li>
+<li><a id="org15d087b"></a>Getting help<br />
+<p>
+Emacs (and orgmode) have good help. <code>C-h i</code>. H is for help and i is for information. You could also use f for function or k for key. 
+</p>
+</li>
+<li><a id="org9daf418"></a>Practice<br />
+<ol>
+<li>Write some text that includes a bold word and an italics word.
+Collaborate to figure out how to do this.</li>
+<li>Make a list with numbers and reorder things.</li>
+<li>Add a link to any website you want.</li>
+<li>Export as a web page and open up the file in firefox and show that your link works.</li>
+<li>Add a link to an image.</li>
+<li>Export the same basic file as a pdf. Verify the link works there too. Make sure you can see the picture.</li>
+
+</ol>
+</li>
+<li><a id="orgd65b7c3"></a>Source code<br />
+<p>
+It is possible to put computer code in files and have it executed at the time the document is compiled. Of course this is not a program in the conventional sense. You will not be getting user input. What it is is a way for you to document fully what analyses were done and how they were done so that others can repeat fully your analysis. It allows you an easy way to update work when new files come in or as other changes to work appears. You will never again search for a missing image file when the images are made at the time the file is compiled.
+</p>
+
+<p>
+There are "cookbooks" with numerous examples <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. 
+</p>
+<ol class="org-ol">
+<li><a id="org8262842"></a>Reproducible Research/Literate Coding<br />
+<p>
+These are two different, but mutually reinforcing concepts. <a href="https://en.wikipedia.org/wiki/Literate_programming">Literate coding</a> is writing code where the emphasis is on embedding the pure code in a textual environment intended to have a human reader. The computer doesn't need the code explained by human users do, so right the code for them with ample explanations. By doing so, you make it easier for others to <a href="https://www.pnas.org/content/112/6/1645/">reproduce</a> your work, and to make suggestions to improve it. 
+</p>
+</li>
+<li><a id="org291d4c3"></a>Testing the inclusion of source code<br />
+<p>
+Open up the test file for babel and verify that you can get it to compile to pdf. Then change or add something. Since you already submitted some R content, you should be able to find some code you know works to test with. 
+</p>
+</li>
+<li><a id="orga40ccc7"></a>Can you combine source code from multiple languages?<br />
+<p>
+That depends on the tool. Rstudio is developed around R, but with org-babel you can combine multiple languages in one document. Add a src block for python and show that it too can be type set and output generated for a pdf. 
+</p>
+</li>
+<li><a id="org7918ca8"></a>Tables.<br />
+<p>
+Pretty much happens automatically. You may have to play with the <i>header</i> arguments to get exactly the look you want. The <i>header</i> arguments are those things appearing on the <code>+#Begin_Src</code> line. 
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-R"><code trim>d <span style="color: #008b8b;">&lt;-</span> data.frame(foo=c(<span style="color: #8b2252;">'a'</span>,<span style="color: #8b2252;">'b'</span>,<span style="color: #8b2252;">'n'</span>), bar=c(1.0/3.0,22,32))
+d
+</code></pre>
 </div>
-<div id="outline-container-orga6455fa" class="outline-4">
-<h4 id="orga6455fa"><span class="section-number-4">4.9.1</span> Writing a simple report</h4>
-</div>
-<div id="outline-container-org42f07ff" class="outline-4">
-<h4 id="org42f07ff"><span class="section-number-4">4.9.2</span> Mixing Code and Text for reproducibility</h4>
-</div>
-<div id="outline-container-org78e63c7" class="outline-4">
-<h4 id="org78e63c7"><span class="section-number-4">4.9.3</span> Start the experimental coding here and continue this week, because the next session will be for running the experiments.</h4>
-</div>
-</div>
-<div id="outline-container-org9aab538" class="outline-3">
-<h3 id="org9aab538"><span class="section-number-3">4.10</span> Session 10 Coding the Experiment</h3>
-<div class="outline-text-3" id="text-4-10">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">foo</th>
+<th scope="col" class="org-right">bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-right">0.333333333333333</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-right">22</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-right">32</td>
+</tr>
+</tbody>
+</table>
+</li>
+
+<li><a id="orgb780ada"></a>What is an inline result?<br />
+<p>
+An inline result is one that appears at the correct place in the text. 
+</p>
+
+<p>
+The mean of 100 mean 0 normally distributed numbers is 0.0916009826270403.
+</p>
+</li>
+
+<li><a id="org94e2c0f"></a>Can I include references?<br />
+<p>
+Yes. Of course you can. 
+</p>
+
+<ol class="org-ol">
+<li><a id="org0341cd9"></a>Using bibtex<br />
+<p>
+There are other, better, approaches (e.g. biblatex), but we will start with the bare bones method for demonstrating the basic capabilities.
+</p>
+
+<p>
+Open up the test bib file and make sure you have the .bib file. Make sure they are both stored in the same directory and that you open the .org file in emacs. Then, if you have the right packages for latex installed, you should be able to <code>C-c C-e l l</code> to produce a file ending with .tex as an extension. Open this in emacs and then keep doing <code>C-c C-c</code> while reading the minibuffer and doing it until it tells you to stop. Then you should have a pdf with a correctly placed citation. 
+</p>
+</li>
+
+
+<li><a id="org543ab2b"></a>Practice<br />
+<p>
+Go to <a href="https://scholar.google.ca">https://scholar.google.ca</a> and set your preferences to show the export as bibtex link. Then grab any reference and add it to the .bib file. Then add a citation to the test file and recompile. Show that you can get the second reference to work.
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+
+</section>
+<section id="slide-org7a896bc">
+<h4 id="org7a896bc"><span class="section-number-4">4.9.3</span> Homework</h4>
+<p>
+Submitting a small .org file and .bib file that will compile correctly to a final pdf and that includes at least one source code block, one reference, one link, one plot, one inline usage, and a bibilography with at least one reference. 
+</p>
+</section>
+<section id="slide-org6e2ad78">
+<h3 id="org6e2ad78"><span class="section-number-3">4.10</span> Session 10 Coding the Experiment</h3>
 <p>
 These last three sessions are generally open with the idea that students will 
 </p>
-<ol class="org-ol">
+<ol>
 <li>Code up an experiment in Psychopy (e.g. stroop or reaction time or simple associative memory task).</li>
 <li>They will collect data on their classmates</li>
 <li>They will write up a report on their experience that includes the source code and simple data analyses.</li>
 <li>They will include some references to pertinent literature.</li>
 <li>They will do this using a reproducible mechanism providing both the raw file and the processed file (pdf preferred, html acceptable.</li>
+
 </ol>
-</div>
-</div>
-<div id="outline-container-orgb2031c5" class="outline-3">
-<h3 id="orgb2031c5"><span class="section-number-3">4.11</span> Session 11 Collecting the Data</h3>
-<div class="outline-text-3" id="text-4-11">
+</section>
+<section id="slide-orgdc0485d">
+<h3 id="orgdc0485d"><span class="section-number-3">4.11</span> Session 11 Collecting the Data</h3>
 <p>
 Data collection.
 </p>
-</div>
-</div>
-<div id="outline-container-orgd935648" class="outline-3">
-<h3 id="orgd935648"><span class="section-number-3">4.12</span> Session 12 Presentations</h3>
+</section>
+<section id="slide-orgc242aac">
+<h3 id="orgc242aac"><span class="section-number-3">4.12</span> Session 12 Presentations</h3>
 <div class="outline-text-3" id="text-4-12">
+</div>
+</section>
+<section id="slide-org206fb66">
+<h4 id="org206fb66"><span class="section-number-4">4.12.1</span> Beamer</h4>
 <p>
-Presentation. Should be able to produce an html 5 slide show of some of the motivation/method/data with graphics.
+N.B. To get this to work I had to first get the emacs htmlize package which lives on github. I first did this in a terminal <code>git clone https://github.com/hniksic/emacs-htmlize.git</code>. Then I added this to my init.el file. 
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-elisp"><code trim>(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">htmlize</span>
+<span style="color: #483d8b;">:load-path</span> <span style="color: #8b2252;">"~/gitrepos/emacs-htmlize/"</span>
+)
+</code></pre>
+</div>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Beamer_(LaTeX)">Beamer on wikipedia</a>
 </p>
 
 <p>
-Can also work on final report and technical questions. The final report will have a later due date. 
+Beamer uses a different "class" to produce a pdf that looks like a slide show instead of an article. To create a Beamer slide show in org-babel you use <code>frames</code> and you need a different org <span class="underline">header</span>. To get that header do the following <code>C-c C-e # default</code> and <code>C-c C-e # latex</code> and note all the new elements that appear in the header of your document. 
 </p>
-<ul class="org-ul">
-<li>Other</li>
-</ul>
+
+<p>
+You will want to set the Option for H to something like 2 or 3. That sets the level of header that becomes a new slide.
+</p>
+
+<p>
+There are also some Beamer specific arguments to set:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-elisp"><code trim>#+startup: beamer
+#+Latex_Class: beamer
+#+Latex_Class_Options: [bigger]
+#+Beamer_Frame_Level: 2
+</code></pre>
 </div>
-</div>
-<div id="outline-container-org2921958" class="outline-3">
-<h3 id="org2921958"><span class="section-number-3">4.13</span> Instructions for Burning Xubuntu to USB</h3>
-<div class="outline-text-3" id="text-4-13">
+
+<p>
+There is a file <code>testBeamer.org</code> that shows a simple example.
+</p>
+
+</section>
+<section id="slide-org376dda3">
+<h4 id="org376dda3"><span class="section-number-4">4.12.2</span> RevealJS</h4>
+<p>
+You need several pieces for this to work:
+</p>
+
+<ol>
+<li>Reveal.js There are instructions for basic and full install at <a href="https://github.com/hakimel/reveal.js#full-setup">github</a>.</li>
+<li>For basic install you just need a release. I will try that.
+<ol>
+<li>Download <code>https://github.com/hakimel/reveal.js/archive/3.8.0.tar.gz</code></li>
+<li><code>tar xvfz reveal.js-3.8.0.tar.gz</code></li>
+
+</ol></li>
+<li>For full you need the following, which did not work for me.</li>
+<li>You will need node.js which means adding another repository, getting stuff from that repo, and then installing to your system. 
+<ol>
+<li><code>sudo apt install curl</code> A utility for getting things from the internet. Similar to <code>wget</code>. You may already have this.</li>
+<li>Get the node stuff you need.
+<code>curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -</code>
+Note that version 12 is the LTS version now, but this will change in the future of course. Check that version number before copying and pasting.</li>
+<li><code>sudo apt-get install -y nodejs</code></li>
+
+</ol></li>
+<li>Now you need to get the Reveal stuff. Github to the rescue.
+<ol>
+<li><code>git clone https://github.com/hakimel/reveal.js.git</code> Note you can put this somewhere. I stick mine in <code>~/gitrepos/</code>.</li>
+<li>Then you <code>cd</code> into the reveal.js folder and run the following commands:</li>
+<li><code>npm install</code></li>
+<li><code>npm start</code></li>
+
+</ol></li>
+<li><p>
+Need org-reveal for emacs. I got this as a "package" from emacs
+I added the following to my init.el file.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-elisp"><code trim>(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">ox-reveal</span>
+ <span style="color: #483d8b;">:ensure</span> t
+)
+</code></pre>
+</div></li>
+<li>Then tell emacs where to find things (probably add to your init file):
+<code>(setq org-reveal-root "file:///home/student/gitrepos/reveal.js")</code></li>
+
+</ol>
+
+
+</section>
+<section id="slide-orgddb79c4">
+<h4 id="orgddb79c4"><span class="section-number-4">4.12.3</span> HTML5</h4>
+
+
+
+</section>
+<section id="slide-org9b42d00">
+<h3 id="org9b42d00"><span class="section-number-3">4.13</span> Instructions for Burning Xubuntu to USB</h3>
 <p>
 The following instructions were cultivated from the following three webpages and represent a blend of their techniques:
 </p>
-<ul class="org-ul">
+<ul>
 <li><a href="https://forums.linuxmint.com/viewtopic.php?f=42&amp;t=287353#p1590473">https://forums.linuxmint.com/viewtopic.php?f=42&amp;t=287353#p1590473</a></li>
 <li><a href="https://www.dionysopoulos.me/portable-ubuntu-on-usb-hdd/">https://www.dionysopoulos.me/portable-ubuntu-on-usb-hdd/</a></li>
 <li><a href="https://superuser.com/questions/376470/how-to-reinstall-grub2-efi">https://superuser.com/questions/376470/how-to-reinstall-grub2-efi</a></li>
+
 </ul>
 
 <p>
@@ -2500,12 +2523,11 @@ However, if you are using a UEFI system (and most of us are at this point) then 
 <p>
 I tried pretty much all the routines in the linux mint description, and not all of them worked reliably for me. They would usually work on the computer I used to generate them, but not on random other computers I tried to boot from. For that reason, I went with this hybrid method that seemed reliable for UEFI systems.
 </p>
-</div>
 
-<div id="outline-container-org3d3ca10" class="outline-4">
-<h4 id="org3d3ca10"><span class="section-number-4">4.13.1</span> Installation Instructions for Installing Xubuntu (and probably other -buntus) to a USB from a USB.</h4>
-<div class="outline-text-4" id="text-4-13-1">
-<ol class="org-ol">
+</section>
+<section id="slide-org642e6c6">
+<h4 id="org642e6c6"><span class="section-number-4">4.13.1</span> Installation Instructions for Installing Xubuntu (and probably other -buntus) to a USB from a USB.</h4>
+<ol>
 <li>You need at least two usbs to be able to be plugged in.</li>
 <li>Boot the live Xubuntu disk. To do this you will first have to figure out what special magic is needed to make your computer allow usb booting. Each manufacturer and OS system has their own combination of keys and boot start-up settings that are required. You have to figure that out first, before starting here.</li>
 <li>Make sure to open up the power management settings and make sure nothing turns off or goes to sleep while you are doing this. Pay attention to the <code>Display</code> tab. Even on power this will put your screen to sleep, which can cause you to lose all your work. Set them to "never" by dragging all the way to the left of the sliders.</li>
@@ -2529,11 +2551,12 @@ I tried pretty much all the routines in the linux mint description, and not all 
 Open up your terminal. And enter the following commands:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">sudo mount /dev/sda2 /mnt
+
+<pre  class="src src-sh"><code trim>sudo mount /dev/sda2 /mnt
 mkdir /mnt/boot/efi
 sudo mount /dev/sda1 /mnt/boot/efi
 nano /mnt/etc/fstab
-</pre>
+</code></pre>
 </div>
 <p>
 What you are doing here is "mounting" your USB at a particular mount point on the booted live system. You will now be able to see those partitions and write to them. First, you mount the root at the top, and then you boot your boot system in its proper place in the hierarchy. You may or may not need to create the directories. 
@@ -2549,11 +2572,12 @@ Your new one should look something like: <code>UUID=0123-ABCD /boot/efi vfat def
 Then you exit out of nano and resume in your terminal.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh"><span style="color: #a020f0;">for</span> i<span style="color: #a020f0;"> in</span> /dev /dev/pts /proc /sys; <span style="color: #a020f0;">do</span> sudo mount -B $<span style="color: #a0522d;">i</span> /mnt/$<span style="color: #a0522d;">i</span>; <span style="color: #a020f0;">done</span>
+
+<pre  class="src src-sh"><code trim><span style="color: #a020f0;">for</span> i<span style="color: #a020f0;"> in</span> /dev /dev/pts /proc /sys; <span style="color: #a020f0;">do</span> sudo mount -B $<span style="color: #a0522d;">i</span> /mnt/$<span style="color: #a0522d;">i</span>; <span style="color: #a020f0;">done</span>
 sudo cp /etc/resolv.conf /mnt/etc/
 modprobe efivars
 sudo chroot /mnt
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -2567,52 +2591,43 @@ What you are doing here is giving your new usb access to functionings of the cur
 <li>It may not be necessary to do a <code>update-grub</code> at this point, but I was getting fatigued and did not thoroughly check. I just did one, and it seemed to work.</li>
 <li>Need to exit chroot and then umount all the mounted directories. You do this by <code>umount</code> in order all the things you <code>mount</code> ed before and in the opposite order. Especially your /mnt/boot/efi which you do not want to corrupt after all this.</li>
 <li>Then you should be able to boot your system on a uefi computer</li>
+
 </ol>
-</div>
-</div>
-</div>
-<div id="outline-container-orgec44462" class="outline-3">
-<h3 id="orgec44462"><span class="section-number-3">4.14</span> Interesting Programs</h3>
-<div class="outline-text-3" id="text-4-14">
+</section>
+<section id="slide-orgfafa235">
+<h3 id="orgfafa235"><span class="section-number-3">4.14</span> Interesting Programs</h3>
 <p>
 As part of their exercises, students locate an interesting program from the Xubuntu software collection. This is a list of the different programs students found and reported on.
 </p>
-</div>
-<div id="outline-container-orga5db789" class="outline-4">
-<h4 id="orga5db789"><span class="section-number-4">4.14.1</span> Programs</h4>
+</section>
+<section id="slide-org3fb3131">
+<h4 id="org3fb3131"><span class="section-number-4">4.14.1</span> Programs</h4>
 <div class="outline-text-4" id="text-4-14-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgc2de1e1"></a>Android Studio<br />
+<li><a id="org6283496"></a>Android Studio<br />
 <ol class="org-ol">
-<li><a id="org2d4986d"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-1-1">
+<li><a id="org1be4306"></a>Program Description<br />
 <p>
 Android Studio is an IDE (Integrated Development Environment) for building your own Android apps.
 It automatically creates the file structure for a number of useful basic App templates, has a useful GUI, and supports virtualization of a number of android devices (for example, simulating a Google Pixel3 XL).
 </p>
-</div>
 </li>
-<li><a id="orgdab304f"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-1-2">
+<li><a id="org80d1194"></a>Review<br />
 <p>
 I'm just getting started with it and the Kotlin language it uses, but so far it is great. My plan for this is to build an app that encompasses a number of basic phone functions while excluding distracting factors like social media, email, etc. 
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org9af7cfa"></a>Caprine<br />
+<li><a id="org842bb28"></a>Caprine<br />
 <ol class="org-ol">
-<li><a id="org3d04f6a"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-2-1">
+<li><a id="org84488a3"></a>Program Description<br />
 <p>
 Caprine is an unofficial Facebook Messenger app for linux.
 </p>
-</div>
 </li>
-<li><a id="org43fb491"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-2-2">
+<li><a id="orgee07016"></a>Review<br />
 <p>
 I like Caprine because I use Facebook Messenger very often on my Windows/MacOS desktop.
 </p>
@@ -2620,258 +2635,212 @@ I like Caprine because I use Facebook Messenger very often on my Windows/MacOS d
 <p>
 Despite being an unofficial app, Caprine looks, feels, and performs perfectly like the official Windows/MacOS desktop app.
 </p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="orge484315"></a>Discord<br />
-<ol class="org-ol">
-<li><a id="orgff03936"></a>Prograc Description<br />
-<div class="outline-text-6" id="text-4-14-1-3-1">
+
 <p>
-I added this change so I had something to submit.
+Functions almost identically to how it does on Windows. It looks like the Ubuntu compatible version was actually created by Discord themselves and not by a third party developer. I would definetely recommend it to others as I feel it's vastly superior to Skype (which is honestly only used in highly professional settings these days). Can run small communities (clubs, class discussions, etc.) and can be used for collaboration in all sorts of formats. I chose it because it is something I personally use frequently to keep in touch with friends (especially helpful for very large groups).
 </p>
-</div>
+
+<p>
+I like Caprine because I use Facebook Messenger very often on my Windows/MacOS desktop.
+</p>
+
+<p>
+Despite being an unofficial app, Caprine looks, feels, and performs perfectly like the official Windows/MacOS desktop app.
+</p>
 </li>
 </ol>
 </li>
-<li><a id="orgdf957be"></a>Amoebax<br />
+<li><a id="org1529b68"></a>Amoebax<br />
 <ol class="org-ol">
-<li><a id="org39c6bc8"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-4-1">
+<li><a id="org76d8799"></a>Program Description<br />
 <p>
 This is a game similar to tetris.
-  A program that was originally developed for the purposes of playing games online with friends, Discord is now used as an alternative to Skype, primarily due to its multi-purpose functionality. It allows for easy collaboration through screensharing, voice, text and video-chat and is entirely free. It can be used as a social hub as well as it runs continually and can be moderated, and is not a singular call.
 </p>
-</div>
-</li>
-<li><a id="org24775f9"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-4-2">
-<p>
-      I downloaded this game because I thought it would be a fun and interesting one. After playing this game, it seems like it's very similar to Tetris, but uses different characters. I would recommend this game to those who like Tetris.  
-Functions almost identically to how it does on Windows. It looks like the Ubuntu compatible version was actually created by Discord themselves and not by a third party developer. I would definetely recommend it to others as I feel it's vastly superior to Skype (which is honestly only used in highly professional settings these days). Can run small communities (clubs, class discussions, etc.) and can be used for collaboration in all sorts of formats. I chose it because it is something I personally use frequently to keep in touch with friends (especially helpful for very large groups).
-</p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="orgece58de"></a>Caprine<br />
-<ol class="org-ol">
-<li><a id="org81498a9"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-5-1">
-<p>
-Caprine is an unofficial Facebook Messenger app for linux.
-</p>
-</div>
-</li>
-<li><a id="org57a870d"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-5-2">
-<p>
-Functions almost identically to how it does on Windows. It looks like the Ubuntu compatible version was actually created by Discord themselves and not by a third party developer. I would definetely recommend it to others as I feel it's vastly superior to Skype (which is honestly only used in highly professional settings these days). Can run small communities (clubs, class discussions, etc.) and can be used for collaboration in all sorts of formats. I chose it because it is something I personally use frequently to keep in touch with friends (especially helpful for very large groups).
-   I like Caprine because I use Facebook Messenger very often on my Windows/MacOS desktop.
-   Despite being an unofficial app, Caprine looks, feels, and performs perfectly like the official Windows/MacOS desktop app.
-</p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="org7ee1ac6"></a>GIMP<br />
-<ol class="org-ol">
-<li><a id="orgc27bc4a"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-6-1">
-<p>
-GIMP is a photo editing software similar to photoshop.
-</p>
-</div>
-</li>
-<li><a id="org9a889c2"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-6-2">
-<p>
-I like GIMP because I want to learn photo editing skills and Photoshop is too expensive. <b>**</b> Bastard Tetris
-</p>
-</div>
-</li>
-<li><a id="org5d8dca8"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-6-3">
-<p>
-This is a small game
-</p>
-</div>
-</li>
-<li><a id="org3da5a00"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-6-4">
-<p>
-I liked it
-</p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="org8927963"></a>Discord<br />
-<ol class="org-ol">
-<li><a id="org08d4d81"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-7-1">
+
 <p>
 A program that was originally developed for the purposes of playing games online with friends, Discord is now used as an alternative to Skype, primarily due to its multi-purpose functionality. It allows for easy collaboration through screensharing, voice, text and video-chat and is entirely free. It can be used as a social hub as well as it runs continually and can be moderated, and is not a singular call.
 </p>
-</div>
 </li>
-<li><a id="org42b3ab3"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-7-2">
+<li><a id="org491e684"></a>Review<br />
+<p>
+I downloaded this game because I thought it would be a fun and interesting one. After playing this game, it seems like it's very similar to Tetris, but uses different characters. I would recommend this game to those who like Tetris.  
+</p>
+
 <p>
 Functions almost identically to how it does on Windows. It looks like the Ubuntu compatible version was actually created by Discord themselves and not by a third party developer. I would definetely recommend it to others as I feel it's vastly superior to Skype (which is honestly only used in highly professional settings these days). Can run small communities (clubs, class discussions, etc.) and can be used for collaboration in all sorts of formats. I chose it because it is something I personally use frequently to keep in touch with friends (especially helpful for very large groups).
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="orgd765739"></a>Snake4<br />
+<li><a id="org473b452"></a>GIMP<br />
 <ol class="org-ol">
-<li><a id="org160909a"></a>Description:<br />
-<div class="outline-text-6" id="text-4-14-1-8-1">
+<li><a id="org8fe9a3b"></a>Program Description<br />
+<p>
+GIMP is a photo editing software similar to photoshop.
+</p>
+</li>
+<li><a id="org4d8fd25"></a>Review<br />
+<p>
+I like GIMP because I want to learn photo editing skills and Photoshop is too expensive. 
+</p>
+</li>
+</ol>
+</li>
+<li><a id="orgbff176a"></a>Bastard Tetris<br />
+<ol class="org-ol">
+<li><a id="org7332082"></a>Program Description<br />
+<p>
+This is a small game
+</p>
+</li>
+<li><a id="orgf25c6ba"></a>Review<br />
+<p>
+I liked it
+</p>
+</li>
+</ol>
+</li>
+<li><a id="org5e3f83c"></a>Discord<br />
+<ol class="org-ol">
+<li><a id="orgabd0d5b"></a>Program Description<br />
+<p>
+A program that was originally developed for the purposes of playing games online with friends, Discord is now used as an alternative to Skype, primarily due to its multi-purpose functionality. It allows for easy collaboration through screensharing, voice, text and video-chat and is entirely free. It can be used as a social hub as well as it runs continually and can be moderated, and is not a singular call.
+</p>
+</li>
+<li><a id="orgbb8a3d3"></a>Review<br />
+<p>
+Functions almost identically to how it does on Windows. It looks like the Ubuntu compatible version was actually created by Discord themselves and not by a third party developer. I would definetely recommend it to others as I feel it's vastly superior to Skype (which is honestly only used in highly professional settings these days). Can run small communities (clubs, class discussions, etc.) and can be used for collaboration in all sorts of formats. I chose it because it is something I personally use frequently to keep in touch with friends (especially helpful for very large groups).
+</p>
+</li>
+</ol>
+</li>
+<li><a id="orgaf11ddf"></a>Snake4<br />
+<ol class="org-ol">
+<li><a id="org0eb35a4"></a>Description:<br />
 <p>
 Snake4 is a basic video game where the player controls a line resembling a snake which is constantly moving and grows in length as it collects food. The main goal is to make the snake as large as possible and the game will be over once you reach the maximum limit. Snake4 is a classic game that is entertaining and relatively easy to play. I downloaded this program so that I can distract myself if Xubuntu gives me less needed anxiety and distress. Stricly not to be used in lectures.
 </p>
-</div>
 </li>
-<li><a id="org761d299"></a>Review:<br />
-<div class="outline-text-6" id="text-4-14-1-8-2">
+<li><a id="org7afb66f"></a>Review:<br />
 <p>
 Snake4 is a nostalgic game which many of us has encountered as our default game application before the smart phone era. The application provided a simple, quick and enjoyable leisure time activity. I still enjoy this program because it reminds me of the simplier times. If you also want to feel a little bit of nostalgia I definetly recommend downloading this entertaining game.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org4d94e2e"></a>Polar<br />
+<li><a id="org20651ff"></a>Polar<br />
 <ol class="org-ol">
-<li><a id="org11262ea"></a>Short Description<br />
-<div class="outline-text-6" id="text-4-14-1-9-1">
+<li><a id="orgc6747b2"></a>Short Description<br />
 <p>
-Polar is a package for organizing and tracking documents, including ^M
+      Polar is a package for organizing and tracking documents, including ^M
 pdfs and webpages. You can tag, highlight and share your documents.
 </p>
-</div>
 </li>
-<li><a id="org386f034"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-9-2">
+<li><a id="orgce3a215"></a>Review<br />
 <p>
-I think Polar can be helpful for literature reviews, when you need to ^M
+      I think Polar can be helpful for literature reviews, when you need to ^M
 keep track of lots of online and downloaded articles.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org0f1c4ee"></a>Gparted and Disks&#x2026;<br />
+<li><a id="org848a567"></a>Gparted and Disks&#x2026;<br />
 <ol class="org-ol">
-<li><a id="orgd34912e"></a>Description<br />
-<div class="outline-text-6" id="text-4-14-1-10-1">
+<li><a id="org4629332"></a>Description<br />
 <p>
 Gparted is a package for formatting USB drives. Disks allows them to be mounted.
 </p>
-</div>
 </li>
-<li><a id="orgf7df722"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-10-2">
+<li><a id="orgbbb41a4"></a>Review<br />
 <p>
 These packages came in handy for reformatting the USB drives when it became necessary. Either due to my experimenting gone wrong, or when they needed to be formatted as fat32 and partitioned so that Xubuntu could be installed on them.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="orgbc68b09"></a>Chromium<br />
+<li><a id="org5fddcc8"></a>Chromium<br />
 <ol class="org-ol">
-<li><a id="org2e68389"></a>Program Description<br />
-<div class="outline-text-6" id="text-4-14-1-11-1">
+<li><a id="org212765d"></a>Program Description<br />
 <p>
 Chromium is a web browser that is the counterpart of Google Chrome on Linux system.
 </p>
-</div>
 </li>
-<li><a id="orgf769410"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-11-2">
+<li><a id="orga6d93f5"></a>Review<br />
 <p>
 Chromium is pretty much identical to Chrome. You can log in to your google account and manage bookmarks, histories, and settings. Optional extension programs within the browser are compatible to the environment as well.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org1460a24"></a>Bastard Tetris<br />
+<li><a id="org4ca0e49"></a>Tasque<br />
 <ol class="org-ol">
-<li><a id="orgf47be64"></a>Short Description<br />
-<div class="outline-text-6" id="text-4-14-1-12-1">
-<p>
-This is text based program that is used to play Tetris, the famous game of blocks.
-</p>
-</div>
-</li>
-<li><a id="org55eebae"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-12-2">
-<p>
-I liked it because, well it is fun. And it is a simplistic game. Just like this is a simple explanation of a game.
-</p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="org4997ebc"></a>Tasque<br />
-<ol class="org-ol">
-<li><a id="orgda7f463"></a>Description:<br />
-<div class="outline-text-6" id="text-4-14-1-13-1">
+<li><a id="org661f9f5"></a>Description:<br />
 <p>
 An application that creates and organizes to-do lists 
 </p>
-</div>
 </li>
-<li><a id="org53153b1"></a>Review:<br />
-<div class="outline-text-6" id="text-4-14-1-13-2">
+<li><a id="orgba6b913"></a>Review:<br />
 <p>
-      It is an average reminders application that has the standard features such as adding additional notes to reminders, the ability to categorize them, etc. Overall, I would stick to your standard phone reminders application due to the ease of accessing it.
-Five in a row board game.
+It is an average reminders application that has the standard features such as adding additional notes to reminders, the ability to categorize them, etc. Overall, I would stick to your standard phone reminders application due to the ease of accessing it.
 </p>
-</div>
 </li>
 </ol>
 </li>
-<li><a id="org39073dc"></a>Bovo Review<br />
-<div class="outline-text-5" id="text-4-14-1-14">
+<li><a id="orgaa98cec"></a>Bovo Review<br />
 <p>
-          I liked it because it looked nice and simple to play. 
+I liked it because it looked nice and simple to play. 
+</p>
+
+<p>
 I also made sure it was small in its size that does not take up 4GB to save in my usb.
 </p>
-</div>
 </li>
-<li><a id="org620bfcb"></a>gbrain<br />
+<li><a id="org402ed14"></a>gbrain<br />
 <ol class="org-ol">
-<li><a id="orgd8d7eb8"></a>Description<br />
-<div class="outline-text-6" id="text-4-14-1-15-1">
+<li><a id="org9afe76d"></a>Description<br />
 <p>
 A game that helps you train your brain
 </p>
-</div>
 </li>
-<li><a id="orgf6acf4d"></a>Review<br />
-<div class="outline-text-6" id="text-4-14-1-15-2">
+<li><a id="orgdfb7130"></a>Review<br />
 <p>
 I like this game as it is challenging to all ages
 </p>
-</div>
 </li>
 </ol>
 </li>
 </ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org708c7a6">
+<h2 id="org708c7a6"><span class="section-number-2">5</span> Improvements:</h2>
+<p>
+I recommend starting the course with R rather than python because it is more useful for those getting a psychology degree (I think) as it is more specific to data analysis. I liked how we were introduced to both R and python in this course. 
+</p>
 </div>
 </div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="date">Date: 2019-04-30 Tue 00:00</p>
-<p class="author">Author: Britt Anderson</p>
-<p class="date">Created: 2019-10-30 Wed 13:30</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
+<script src="file:///home/student/gitrepos/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/student/gitrepos/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///home/student/gitrepos/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/student/gitrepos/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/student/gitrepos/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///home/student/gitrepos/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
 </body>
 </html>
