@@ -1,0 +1,68 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: testReveal
+#+DATE: <2019-12-03 Tue>
+#+AUTHOR: student
+#+EMAIL: student@student-computer
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.3 (Org mode 9.1.9)
+#+OPTIONS: reveal_center:nil reveal_control:nil
+#+OPTIONS: reveal_global_footer:nil reveal_global_header:nil
+#+OPTIONS: reveal_height:nil reveal_history:nil reveal_keyboard:nil
+#+OPTIONS: reveal_overview:nil reveal_progress:nil
+#+OPTIONS: reveal_rolling_links:nil reveal_single_file:nil
+#+OPTIONS: reveal_slide_number:nil reveal_width:nil
+#+REVEAL_MARGIN:
+#+REVEAL_MIN_SCALE:
+#+REVEAL_MAX_SCALE:
+#+REVEAL_ROOT: file:///home/student/gitrepos/reveal.js
+#+REVEAL_TRANS:
+#+REVEAL_SPEED:
+#+REVEAL_THEME: moon
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_EXTRA_INITIAL_JS:
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TITLE_SLIDE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_POSITION:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_POSITION:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_OPACITY:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_EXTERNAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+#+REVEAL_INIT_OPTIONS:
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+
+* This is a header
+
+** This is a sub header
+   With some text
+
+** Another subheader with an equation
+   $2 + 2 = 4$
+
