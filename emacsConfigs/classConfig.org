@@ -1,0 +1,998 @@
+#+STARTUP: here's startup
+#+STARTUP: overview
+#+TITLE: Jack's (Uncle Dave's) emacs setup
+#+CREATOR: Jack  m
+#+LANGUAGE: en
+#+OPTIONS: num:nil
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+
+
+
+* Intro 
+This file is based heavily off of [[https://github.com/daedreth/UncleDavesEmacs][Uncle Dave's Emacs]], by Dawid 'daedreth' Eckert.
+
+
+The benefits of learning to use emacs are great, but the learning curve is steep. The packages included here improve upon the base capabilities of Emacs with the intention of making emacs slightly easier for beginners to familiarize themselves with.
+
+
+** Intro to Customization
+
+emacs relies at base on one configuration file called =init.el=. 
+This file is where customization usually starts, but if you have several distinct activities you use emacs for, you may want to organize your customizations in a more legible format. *org-mode* files are great for this. To load a configuration file (ex. this file, config.org), add the following lines to your init file.
+
+#+BEGIN_EXAMPLE emacs-lisp
+  ;; converts org files to lisp, when corresponding org file is present
+
+  (when (file-readable-p "~/.emacs.d/email.org")
+    (org-babel-load-file (expand-file-name "~/.emacs.d/email.org")))
+
+#+END_EXAMPLE
+
+** Housekeeping
+*** Keep GNU GPG Key Updated
+Precautionary measure: the code below makes sure the standard package repositories can be accessed
+#+BEGIN_SRC emacs-lisp
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(use-package gnu-elpa-keyring-update
+:ensure t)
+#+END_SRC
+
+
+
+* Basic Interface Settings
+These are setting that do not depend on packages and are built-in enhancements to the UI - Directly from UDE
+** Looks
+*** Remove lame startup screen
+We use an actual replacement for it, keep reading or head directly to =dashboard=.
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+#+END_SRC
+*** Disable menus and scrollbars
+If you like using any of those, change =-1= to =1=.
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+#+END_SRC
+*** Disable bell
+This is annoying, remove this line if you like being visually reminded of events.
+#+BEGIN_SRC emacs-lisp
+(setq ring-bell-function 'ignore)
+#+END_SRC
+*** Set UTF-8 encoding
+#+BEGIN_SRC emacs-lisp 
+  (setq locale-coding-system 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+#+END_SRC
+*** Highligh current line
+=hl-line= is awesome! It's not very awesome in the terminal version of emacs though, so we don't use that.
+Besides, it's only used for programming.
+#+BEGIN_SRC emacs-lisp
+  (when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
+#+END_SRC
+
+** Functionality
+*** Disable backups and auto-saves
+set either of these options from =t= to =nil= if you want to disable either
+#+BEGIN_SRC emacs-lisp
+(setq make-backup-files t)
+(setq auto-save-default t)
+#+END_SRC
+
+*** Change yes-or-no questions into y-or-n questions
+#+BEGIN_SRC emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+*** Allow Sudo shell commands to run
+From https://stackoverflow.com/questions/2472273/how-do-i-run-a-sudo-command-in-emacs
+#+BEGIN_SRC emacs-lisp
+(defun sudo-shell-command (command)
+  (interactive "MShell command (root): ")
+  (with-temp-buffer
+    (cd "/sudo::/")
+    (async-shell-command command)))
+#+END_SRC
+*** View directories first in Dired
+
+Pretty straightforward, groups directories first when looking at a directory (C-x d)
+#+BEGIN_SRC emacs-lisp
+(setq dired-listing-switches "-aBhl --group-directories-first")
+#+END_SRC
+
+* UI
+** Better defaults
+The better defaults package includes some very useful better...defaults. Read about them [[https://github.com/technomancy/better-defaults][here]]
+#+BEGIN_SRC emacs-lisp
+(use-package better-defaults
+:ensure t)
+#+END_SRC
+** Theme
+The look of emacs can be customized extensively and many premade themes exist. Search through them either in google or by M-x package-list-packages, and add any theme you like. I have included the theme "dracula"
+note: if you change the theme and some colors look weird after restarting it, you may have some extra values stored in either ==init.el== or ==custom.el==. Try to find and remove them, they likely be under ==(custom-set-faces)==
+#+BEGIN_SRC emacs-lisp
+  (use-package dracula-theme
+    :ensure t)
+  (setq custom-safe-themes t)
+  (load-theme 'dracula)
+#+END_SRC
+
+** frame commands
+This code allows you to resize windows more easily by pretty ctrl + super + an arrow key
+TODO need to add load-path frame-cmds.el?
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<C-s-down>") 'shrink-window)  
+(global-set-key (kbd "<C-s-up>") 'enlarge-window)  
+(global-set-key (kbd "<C-s-right>") 'shrink-window-horizontally)  
+(global-set-key (kbd "<C-s-left>") 'enlarge-window-horizontally)
+#+END_SRC
+
+** Async
+Lets us use asynchronous processes wherever possible, pretty useful.
+#+BEGIN_SRC emacs-lisp
+  (use-package async
+    :ensure t
+    :init (dired-async-mode 1))
+#+END_SRC
+
+** Editing files as root
+"Pretty self-explanatory, useful as hell if you use exwm"
+#+BEGIN_SRC emacs-lisp
+  (use-package sudo-edit
+    :ensure t
+    :bind
+      ("s-e" . sudo-edit))
+#+END_SRC
+
+
+
+
+
+
+* Dashboard and Projectile
+** Dashboard
+Dashboard and projectile together allow for quick access to recently used files and projects
+
+
+#+BEGIN_SRC emacs-lisp
+(if (not (version< emacs-version "26.1"))
+  (use-package dashboard
+    :ensure t
+    :config
+      (dashboard-setup-startup-hook)
+      ;(setq dashboard-startup-banner "~/.emacs.d/img/dashLogo.png")
+      (setq dashboard-items '((recents  . 5)
+                              (projects . 5)))
+
+      (setq dashboard-banner-logo-title "")))
+#+END_SRC
+
+** Projectile
+Projectile is an awesome project manager, mostly because it recognizes directories
+with a =.git= directory as projects and helps you manage them accordingly.
+
+*** Enable projectile globally
+This makes sure that everything can be a project.
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init
+      (projectile-mode 1))
+#+END_SRC
+
+*** Let projectile call make
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<f5>") 'projectile-compile-project)
+#+END_SRC
+
+
+
+* Modeline 
+All straight from Uncle Dave's Emacs
+One modeline-related setting that is missing and is instead placed at the bottom is =diminish=.
+
+** Spaceline!
+ I may not use spacemacs, since I do not like evil-mode and find spacemacs incredibly bloated and slow,
+ however it would be stupid not to acknowledge the best parts about it, the theme and their modified powerline setup.
+
+ This enables spaceline, it looks better and works very well with my theme of choice.
+#+BEGIN_SRC emacs-lisp
+  (use-package spaceline
+    :ensure t
+    :config
+    (require 'spaceline-config)
+      (setq spaceline-buffer-encoding-abbrev-p nil)
+      (setq spaceline-line-column-p nil)
+      (setq spaceline-line-p nil)
+      (setq powerline-default-separator (quote arrow))
+      (spaceline-spacemacs-theme))
+#+END_SRC
+
+** No separator!
+#+BEGIN_SRC emacs-lisp
+  (setq powerline-default-separator nil)
+#+END_SRC
+
+** Cursor position
+Show the current line and column for your cursor.
+We are not going to have =relative-linum-mode= in every major mode, so this is useful.
+#+BEGIN_SRC emacs-lisp
+  (setq line-number-mode t)
+  (setq column-number-mode t)
+#+END_SRC
+
+** Clock
+If you prefer the 12hr-format, change the variable to =nil= instead of =t=.
+
+*** Time format
+#+BEGIN_SRC emacs-lisp
+  (setq display-time-24hr-format nil)
+  (setq display-time-format "%H:%M - %d %B %Y")
+#+END_SRC
+
+*** Enabling the mode
+This turns on the clock globally.
+#+BEGIN_SRC emacs-lisp
+  (display-time-mode 1)
+#+END_SRC
+
+** Battery indicator
+A package called =fancy-battery= will be used if we are in GUI emacs, otherwise the built in battery-mode will be used.
+Fancy battery has very odd colors if used in the tty, hence us disabling it.
+#+BEGIN_SRC emacs-lisp
+  (use-package fancy-battery
+    :ensure t
+    :config
+      (setq fancy-battery-show-percentage t)
+      (setq battery-update-interval 15)
+      (if window-system
+        (fancy-battery-mode)
+        (display-battery-mode)))
+#+END_SRC
+
+** System monitor
+A teeny-tiny system monitor that can be enabled or disabled at runtime, useful for checking performance
+with power-hungry processes in ansi-term
+
+symon can be toggled on and off with =Super + h=.
+#+BEGIN_SRC emacs-lisp
+  (use-package symon
+    :ensure t
+    :bind
+    ("s-h" . symon-mode))
+#+END_SRC
+
+* The terminal
+All straight from Uncle Dave's Emacs
+I have used urxvt for years, and I miss it sometimes, but ansi-term is enough for most of my tasks.
+
+** Default shell should be bash
+I don't know why this is a thing, but asking me what shell to launch every single
+time I open a terminal makes me want to slap babies, this gets rid of it.
+This goes without saying but you can replace bash with your shell of choice.
+#+BEGIN_SRC emacs-lisp
+  (defvar my-term-shell "/bin/bash")
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term)
+#+END_SRC
+
+** Easy to remember keybinding
+In loving memory of bspwm, Super + Enter opens a new terminal, old habits die hard.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<s-return>") 'ansi-term)
+#+END_SRC
+
+
+
+* Moving around emacs
+One of the most important things about a text editor is how efficient you manage
+to be when using it, how much time do basic tasks take you and so on and so forth.
+One of those tasks is moving around files and buffers, whatever you may use emacs for
+you /will/ be jumping around buffers like it's serious business, the following
+set of enhancements aims to make it easier.
+
+
+** Helm
+Sometimes, you don't realize how good something is until you try it extensively.
+I give in, helm is awesome. I'll end up customizing it more eventually,
+it's rather similar to ido-vertical though.
+#+BEGIN_SRC emacs-lisp
+  (use-package helm
+    :ensure t
+    :bind
+    ("C-x C-f" . 'helm-find-files)
+    ("C-x C-b" . 'helm-buffers-list)
+    ("M-x" . 'helm-M-x)
+    :config
+    (defun daedreth/helm-hide-minibuffer ()
+      (when (with-helm-buffer helm-echo-input-in-header-line)
+        (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+          (overlay-put ov 'window (selected-window))
+          (overlay-put ov 'face
+                       (let ((bg-color (face-background 'default nil)))
+                         `(:background ,bg-color :foreground ,bg-color)))
+          (setq-local cursor-type nil))))
+    (add-hook 'helm-minibuffer-set-up-hook 'daedreth/helm-hide-minibuffer)
+    (setq helm-autoresize-max-height 0
+          helm-autoresize-min-height 40
+          helm-M-x-fuzzy-match t
+          helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match t
+          helm-semantic-fuzzy-match t
+          helm-imenu-fuzzy-match t
+          helm-split-window-in-side-p nil
+          helm-move-to-line-cycle-in-source nil
+          helm-ff-search-library-in-sexp t
+          helm-scroll-amount 8 
+          helm-echo-input-in-header-line t)
+    :init
+    (helm-mode 1))
+
+  (require 'helm-config)    
+  (helm-autoresize-mode 1)
+  (define-key helm-find-files-map (kbd "C-b") 'helm-find-files-up-one-level)
+  (define-key helm-find-files-map (kbd "C-f") 'helm-execute-persistent-action)
+#+END_SRC
+
+** Counsel - Ivy, Swiper, Counsel
+Counsel consists of Ivy, Swiper, and Counsel.
+Counsel contains some improvements to common emacs functions, that are applied when it is used with ivy. So if you are using helm, probably better to disable it?
+*** Counsel
+#+BEGIN_SRC emacs-lisp
+    (use-package counsel
+      :ensure t
+      :config
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq enable-recursive-minibuffers t)
+      ;; enable this if you want `swiper' to use it - check it out TODO
+      ;; (setq search-default-mode #'char-fold-to-regexp)
+      (global-set-key "\C-s" 'swiper)
+      (global-set-key (kbd "C-c C-r") 'ivy-resume)
+      (global-set-key (kbd "<f6>") 'ivy-resume)
+
+      ;; (global-set-key (kbd "M-x") 'counsel-M-x) disabled for helm
+      (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+      (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+      (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+      (global-set-key (kbd "<f1> l") 'counsel-find-library)
+      (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+      (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+      (global-set-key (kbd "C-c g") 'counsel-git)
+      (global-set-key (kbd "C-c j") 'counsel-git-grep)
+      (global-set-key (kbd "C-c k") 'counsel-ag)
+      (global-set-key (kbd "C-x l") 'counsel-locate)
+      (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+      (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+      )
+  ;;  Turn this on to check out after counsel/ivy setup
+
+
+
+#+END_SRC
+For hydra below, I could make an alternate file to hold it's mass of code
+#+BEGIN_SRC emacs-lisp
+(use-package hydra
+:ensure t
+:config
+
+(defhydra hydra-undo-tree (:hint nil)
+  "
+  _p_: undo  _n_: redo _s_: save _l_: load   "
+  ("p"   undo-tree-undo)
+  ("n"   undo-tree-redo)
+  ("s"   undo-tree-save-history)
+  ("l"   undo-tree-load-history)
+  ("u"   undo-tree-visualize "visualize" :color blue)
+  ("q"   nil "quit" :color blue))
+
+(global-set-key (kbd "C-x u") 'hydra-undo-tree/undo-tree-undo)
+
+)
+#+END_SRC
+[[https://github.com/abo-abo/hydra][Hydra configure spot]]
+#+BEGIN_SRC emacs-lisp
+(use-package ivy-hydra
+:after (ivy hydra)
+:ensure t
+)
+
+#+END_SRC
+
+*** Ivy- separated from counsel- a prerequisite for others packages
+##+BEGIN_SRC emacs-lisp
+  (use-package ivy
+    :ensure t
+    :config
+    (setq ivy-use-virtual-buffers t))
+##+END_SRC
+*** swiper - separated from counsel 
+Big improvement to searching - disabling here because included with counsel
+##+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :ensure t
+    :bind ("C-s" . 'swiper))
+##+END_SR
+
+** avy - aids movement in buffers
+From Uncle Dave
+Many times have I pondered how I can move around buffers even quicker.
+I'm glad to say, that avy is precisely what I needed, and it's precisely what you need as well.
+In short, as you invoke one of avy's functions, you will be prompted for a character
+that you'd like to jump to in the /visible portion of the current buffer/.
+Afterwards you will notice how all instances of said character have additional letter on top of them.
+Pressing those letters, that are next to your desired character will move your cursor over there.
+Admittedly, this sounds overly complicated and complex, but in reality takes a split second
+and improves your life tremendously.
+
+I like =M-s= for it, same as =C-s= is for moving by searching string, now =M-s= is moving by searching characters.
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind
+      ("M-s" . avy-goto-char))
+#+END_SRC
+
+
+** scrolling and why does the screen move
+From Uncle Dave
+I don't know to be honest, but this little bit of code makes scrolling with emacs a lot nicer.
+#+BEGIN_SRC emacs-lisp
+  (setq scroll-conservatively 100)
+#+END_SRC
+
+** which-key: Probably the most important learning package
+Great package, allows key combination options to be displayed after a slight pause in typing a sequence
+- Idle delay set very low while learning, this can easily be raised in the future
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t 
+    :config
+    (which-key-mode)
+    (setq which-key-idle-delay 0.01)
+  )
+#+END_SRC
+
+** Window behavior 
+*** switch-window
+switch-window is great. If you have three or more windows open, when you press ==C-x o== (which switches windows) each window will be assigned a letter to switch to it by. You could change these to numbers if that felt more comfortable.
+
+#+BEGIN_SRC emacs-lisp
+(use-package switch-window
+  :ensure t
+  :config
+    (setq switch-window-input-style 'minibuffer)
+    (setq switch-window-increase 4)
+    (setq switch-window-threshold 2)
+    (setq switch-window-shortcut-style 'qwerty)
+    (setq switch-window-qwerty-shortcuts
+        '("a" "s" "d" "f" "j" "k" "l" "i" "o"))
+  :bind
+    ([remap other-window] . switch-window))
+#+END_SRC
+
+*** Following window splits
+"After you split a window, your focus remains in the previous one. This annoyed me so much I wrote these two, they take care of it." - Uncle Dave
+#+BEGIN_SRC emacs-lisp
+  (defun split-and-follow-horizontally ()
+    (interactive)
+    (split-window-below)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+  (defun split-and-follow-vertically ()
+    (interactive)
+    (split-window-right)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+#+END_SRC
+
+** buffers and why I hate list-buffers
+From Uncle Dave
+Another big thing is, buffers. If you use emacs, you use buffers, everyone loves them.
+Having many buffers is useful, but can be tedious to work with, let us see how we can improve it.
+
+*** Always murder current buffer
+Causes =C-x k= to always kill current buffer.
+#+BEGIN_SRC emacs-lisp
+  (defun kill-current-buffer ()
+    "Kills the current buffer."
+    (interactive)
+    (kill-buffer (current-buffer)))
+  (global-set-key (kbd "C-x k") 'kill-current-buffer)
+#+END_SRC
+
+*** Kill buffers without asking for confirmation
+Unless you have the muscle memory, I recommend omitting this bit, as you may lose progress for no reason when working.
++BEGIN_SRC emacs-lisp
+(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
++END_SRC
+Jack: Omitted through removal of # from SRC tags, add it back to re-enable
+*** Turn switch-to-buffer into ibuffer
+I don't understand how ibuffer isn't the default option by now.
+It's vastly superior in terms of ergonomics and functionality, you can delete buffers, rename buffer, move buffers, organize buffers etc.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x b") 'ibuffer)
+#+END_SRC
+**** expert-mode
+If you feel like you know how ibuffer works and need not to be asked for confirmation after every serious command, enable this as follows.
+#+BEGIN_SRC emacs-lisp
+(setq ibuffer-expert nil)
+#+END_SRC
+*** close-all-buffers
+This can be invoked using =C-M-s-k=. This keybinding makes sure you don't hit it unless you really want to.
+#+BEGIN_SRC emacs-lisp
+  (defun close-all-buffers ()
+    "Kill all buffers without regard for their origin."
+    (interactive)
+    (mapc 'kill-buffer (buffer-list)))
+  (global-set-key (kbd "C-M-s-k") 'close-all-buffers)
+#+END_SRC
+
+
+
+
+* Text manipulation
+All from Uncle Dave, and all are very nice
+Here I shall collect self-made functions that make editing text easier.
+** Mark-Multiple
+I can barely contain my joy. This extension allows you to quickly mark the next occurence of a region and edit them all at once. Wow!
+#+BEGIN_SRC emacs-lisp
+  (use-package mark-multiple
+    :ensure t
+    :bind ("C-c q" . 'mark-next-like-this))
+#+END_SRC
+
+** Improved kill-word
+Why on earth does a function called =kill-word= not .. kill a word.
+It instead deletes characters from your cursors position to the end of the word,
+let's make a quick fix and bind it properly.
+#+BEGIN_SRC emacs-lisp
+  (defun daedreth/kill-inner-word ()
+    "Kills the entire word your cursor is in. Equivalent to 'ciw' in vim."
+    (interactive)
+    (forward-char 1)
+    (backward-word)
+    (kill-word 1))
+  (global-set-key (kbd "C-c w k") 'daedreth/kill-inner-word)
+#+END_SRC
+
+** Improved copy-word
+And again, the same as above but we make sure to not delete the source word.
+#+BEGIN_SRC emacs-lisp
+  (defun daedreth/copy-whole-word ()
+    (interactive)
+    (save-excursion
+      (forward-char 1)
+      (backward-word)
+      (kill-word 1)
+      (yank)))
+  (global-set-key (kbd "C-c w c") 'daedreth/copy-whole-word)
+#+END_SRC
+
+** Copy a line
+Regardless of where your cursor is, this quickly copies a line.
+#+BEGIN_SRC emacs-lisp
+  (defun daedreth/copy-whole-line ()
+    "Copies a line without regard for cursor position."
+    (interactive)
+    (save-excursion
+      (kill-new
+       (buffer-substring
+        (point-at-bol)
+        (point-at-eol)))))
+  (global-set-key (kbd "C-c l c") 'daedreth/copy-whole-line)
+#+END_SRC
+
+** Kill a line
+And this quickly deletes a line.
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c l k") 'kill-whole-line)
+#+END_SRC
+
+
+
+
+** Undo-tree
+This package makes a minibuffer window pop up that allows for repeating undo commands more easily, and can visualize the "path" of an undo/redo tree
+#+BEGIN_SRC emacs-lisp
+(use-package undo-tree
+:ensure t
+:after diminish
+:config 
+(undo-tree-mode 1)
+(diminish 'undo-tree-mode))
+#+END_SRC
+
+* Minor conveniences
+Effecively all from Uncle Dave
+Emacs is at it's best when it just does things for you, shows you the way, guides you so to speak.
+This can be best achieved using a number of small extensions. While on their own they might not be particularly
+impressive. Together they create a nice environment for you to work in.
+
+** Visiting the configuration
+Quickly edit =~/.emacs.d/config.org=
+#+BEGIN_SRC emacs-lisp
+  (defun config-visit ()
+    (interactive)
+    (find-file "~/.emacs.d/config.org"))
+  (global-set-key (kbd "C-c e") 'config-visit)
+#+END_SRC
+
+** Reloading the configuration
+
+Simply pressing =Control-c r= will reload this file, very handy.
+You can also manually invoke =config-reload=.
+#+BEGIN_SRC emacs-lisp
+  (defun config-reload ()
+    "Reloads ~/.emacs.d/config.org at runtime"
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (global-set-key (kbd "C-c r") 'config-reload)
+#+END_SRC
+
+** Subwords 
+Emacs treats camelCase strings as a single word by default, this changes said behaviour.
+#+BEGIN_SRC emacs-lisp
+  (global-subword-mode 1)
+#+END_SRC
+
+** Electric - create matching brackets
+If you write any code, you may enjoy this.
+Typing the first character in a set of 2, completes the second one after your cursor.
+Opening a bracket? It's closed for you already. Quoting something? It's closed for you already.
+
+You can easily add and remove pairs yourself, have a look.
+#+BEGIN_SRC emacs-lisp
+(setq electric-pair-pairs '(
+                           (?\{ . ?\})
+                           (?\( . ?\))
+                           (?\[ . ?\])
+                           (?\" . ?\")
+                           ))
+#+END_SRC
+
+And now to enable it
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode t)
+#+END_SRC
+
+** Show parens - highlight paired brackets
+Highlights matching parens when the cursor is just behind one of them.
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode 1)
+#+END_SRC
+
+** Beacon - Highlight cursor on buffer switch
+Every time you change buffers, the current position of your cursor will be briefly highlighted now.
+#+BEGIN_SRC emacs-lisp
+  (use-package beacon
+    :ensure t
+    :config
+      (beacon-mode 1))
+#+END_SRC
+
+** Rainbow - easier hex color viewing
+Mostly useful if you are into web development or game development.
+Every time emacs encounters a hexadecimal code that resembles a color, it will automatically highlight
+it in the appropriate color. This is a lot cooler than you may think.
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-mode
+    :ensure t
+    :init
+      (add-hook 'prog-mode-hook 'rainbow-mode))
+#+END_SRC
+
+** Rainbow delimiters - Disabled for now to test why <> brackets autocomplete themselves
+Colors parentheses and other delimiters depending on their depth, useful for any language using them,
+especially lisp.
+##+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+      (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+##+END_SRC
+** Expand region: Unsure exactly of where to use yet but it seemed to help python autocomplete
+A pretty simple package, takes your cursor and semantically expands the region, so words, sentences, maybe the contents of some parentheses, it's awesome, try it out.
+#+BEGIN_SRC emacs-lisp
+  (use-package expand-region
+    :ensure t
+    :bind ("C-q" . er/expand-region))
+#+END_SRC
+
+** Hungry deletion - clear whitespace faster
+On the list of things I like doing, deleting big whitespaces is pretty close to the bottom.
+Backspace or Delete will get rid of all whitespace until the next non-whitespace character is encountered.
+You may not like it, thus disable it if you must, but it's pretty decent.
+# #+BEGIN_SRC emacs-lisp
+#   (use-package hungry-delete
+#     :ensure t
+#     :config
+#       (global-hungry-delete-mode))
+# #+END_SRC
+
+** Zapping to char - useful
+A nifty little package that kills all text between your cursor and a selected character.
+A lot more useful than you might think. If you wish to include the selected character in the killed region,
+change =zzz-up-to-char= into =zzz-to-char=.
+#+BEGIN_SRC emacs-lisp
+  (use-package zzz-to-char
+    :ensure t
+    :bind ("M-z" . zzz-up-to-char))
+#+END_SRC
+
+* Kill ring
+Uncle Dave
+There is a lot of customization to the kill ring, and while I have not used it much before,
+I decided that it was time to change that.
+** Maximum entries on the ring
+The default is 60, I personally need more sometimes.
+#+BEGIN_SRC emacs-lisp
+  (setq kill-ring-max 100)
+#+END_SRC
+
+** popup-kill-ring
+Out of all the packages I tried out, this one, being the simplest, appealed to me most.
+With a simple M-y you can now browse your kill-ring like browsing autocompletion items.
+C-n and C-p totally work for this.
+#+BEGIN_SRC emacs-lisp
+  (use-package popup-kill-ring
+    :ensure t
+    :bind ("M-y" . popup-kill-ring))
+#+END_SRC
+
+* Working with PDFs
+[[https://github.com/politza/pdf-tools][This seems pretty great]]
+#+BEGIN_SRC emacs-lisp
+(use-package pdf-tools
+:ensure t)
+#+END_SRC
+* Programming
+Minor, non-completion related settings and plugins for writing code.
+
+** Git integration - with Magit
+Magit is a great way to work with git from within emacs without having to open up multiple terminals.
+*** magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :config
+    (setq magit-push-always-verify nil)
+    (setq git-commit-summary-max-length 50)
+    :bind
+    ("M-g" . magit-status))
+#+END_SRC
+
+** yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+:ensure t
+:config
+(use-package yasnippet-snippets
+:ensure t)
+)
+
+(use-package ivy-yasnippet
+:after (ivy yasnippet)
+:ensure t
+:config
+(add-hook 'ivy-mode-hook 'yas-minor-mode)
+(yas-reload-all))
+#+END_SRC
+
+** company mode
+Company mode provides a very useful autocomplete framework
+
+"I set the delay for company mode to kick in to half a second, I also make sure that
+it starts doing its magic after typing in only 2 characters."
+Jack - I turned this on while trying to get ein's autoicomplete working
+
+"I prefer =C-n= and =C-p= to move around the items, so I remap those accordingly."
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :config
+    (setq company-idle-delay 0.5)
+    (setq company-minimum-prefix-length 2)
+    (add-hook 'after-init-hook 'global-company-mode))
+
+  (with-eval-after-load 'company
+    (define-key company-active-map [return] nil)
+    (define-key company-active-map [tab] 'company-complete-common)
+    (define-key company-active-map (kbd "TAB") 'company-complete-common)
+    (define-key company-active-map (kbd "M-TAB") 'company-complete-selection)
+    (define-key company-active-map (kbd "M-n") nil)
+    (define-key company-active-map (kbd "M-p") nil)
+    (define-key company-active-map (kbd "C-n") #'company-select-next)
+    (define-key company-active-map (kbd "C-p") #'company-select-previous)
+    (define-key company-active-map (kbd "SPC") #'company-abort))
+#+END_SRC
+** Specific Language Support
+*** Python
+Most code has been removed from here, with only basic settings for improving python coding included. 
+If you want to power up emacs as a python environment even further, [[https://www.google.com/search?client=ubuntu&channel=fs&q=emacs+the+best+python+editor&ie=utf-8&oe=utf-8][read this link]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package company-jedi
+    :ensure t
+    :after company
+    :config
+    (add-to-list 'company-backends 'company-jedi)
+    (add-hook 'python-mode-hook 'company-jedi-setup)
+    (setq jedi:setup-keys t)
+    (setq jedi:complete-on-dot t)
+    (add-hook 'python-mode-hook 'jedi:setup))
+
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i")
+
+
+  (use-package py-autopep8
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
+#+END_SRC
+
+
+
+
+
+* Org-mode
+ 
+The majority of this is from Uncle Dave's Emacs, but I have added and modified some of the customizations
+
+From Uncle Dave
+One of the absolute greatest features of emacs is called "org-mode\".
+This very file has been written in org-mode, a lot of other configurations are written in org-mode, same goes for
+academic papers, presentations, schedules, blogposts and guides.
+Org-mode is one of the most complex things ever, lets make it a bit more usable with some basic configuration.
+
+
+Those are all rather self-explanatory.
+** Common settings
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-ellipsis " ")
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-export-with-smart-quotes t)
+  (setq org-src-window-setup 'current-window)
+  (add-hook 'org-mode-hook 'org-indent-mode)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  ;; The following lines are always needed.  Choose your own keys.
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cc" 'org-capture)
+  (global-set-key "\C-cb" 'org-switchb)
+#+END_SRC
+
+** Org Bullets
+Makes it all look a bit nicer, I hate looking at asterisks.
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
+** Inline images
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(add-hook 'org-mode-hook 'org-display-inline-images)
+#+END_SRC
+
+** Language Source Block Quick Inserts
+Extended from the initial emacs-lisp - Jack
+*** Base Template
+Hitting tab after an <SHORTCUT will insert a LANG block.
+For example, <py becomes #+BEGIN_SRC python
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'org-structure-template-alist
+	       '("SHORTCUT" "#+BEGIN_SRC LANG\n?\n#+END_SRC"))
+#+END_SRC
+
+*** emacs-lisp
+Hitting tab after an "<el" in an org-mode file will create a template for elisp insertion.
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'org-structure-template-alist
+	       '("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
+#+END_SRC
+
+*** R
+Hitting tab after an "<r" will insert an R block
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'org-structure-template-alist
+	       '("r" "#+BEGIN_SRC R\n?\n#+END_SRC"))
+#+END_SRC
+*** Python
+Hitting tab after a "<py" will insert a python block
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'org-structure-template-alist
+	       '("py" "#+BEGIN_SRC python\n?\n#+END_SRC"))
+#+END_SRC
+** Line wrapping
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook
+	    '(lambda ()
+	       (visual-line-mode 1)))
+#+END_SRC
+
+** Keybindings
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c '") 'org-edit-src-code)
+  (global-set-key (kbd "C-x f") 'find-file)
+#+END_SRC
+
+** Syntax highlighting for documents exported to HTML
+#+BEGIN_SRC emacs-lisp
+  (use-package htmlize
+    :ensure t)
+#+END_SRC
+
+** Exporting options
+One of the best things about org is the ability to export your file to many formats.
+Here is how we add more of them!
+
+*** latex
+#+BEGIN_SRC emacs-lisp
+  (when (file-directory-p "/usr/share/emacs/site-lisp/tex-utils")
+    (add-to-list 'load-path "/usr/share/emacs/site-lisp/tex-utils")
+    (require 'xdvi-search))
+#+END_SRC
+
+
+* Diminishing modes: refine as use dictates
+Allows modeline to be less cluttered by reducing what appears on it. This does become very useful, but I myself need to gain more experience with it - Jack
+
+from Uncle Dave
+*THIS WILL BE REMOVED SOON AS USE-PACKAGE HAS THE FUNCTIONALITY BUILT IN*
+
+Example one:
+Edit this list as you see fit!
+##+BEGIN_SRC emacs-lisp
+  (use-package diminish
+    :ensure t
+    :init
+    (diminish 'which-key-mode)
+    (diminish 'linum-relative-mode)
+    (diminish 'hungry-delete-mode)
+    (diminish 'visual-line-mode)
+    (diminish 'subword-mode)
+    (diminish 'beacon-mode)
+    (diminish 'irony-mode)
+    (diminish 'page-break-lines-mode)
+    (diminish 'auto-revert-mode)
+    (diminish 'rainbow-delimiters-mode)
+    (diminish 'rainbow-mode)
+    (diminish 'yas-minor-mode)
+    ())
+##+END_SRC
+
+In-use one:
+#+BEGIN_SRC emacs-lisp
+  (use-package diminish
+  :ensure t
+  :init
+  (diminish 'which-key-mode)
+  (diminish 'hungry-delete-mode)
+  (diminish 'rainbow-delimiters-mode)
+  (diminish 'rainbow-mode)
+  (diminish 'yas-minor-mode)
+  )
+#+END_SRC
+
+
+
+
+
+
+
+
+
